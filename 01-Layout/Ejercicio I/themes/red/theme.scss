@@ -1,0 +1,53 @@
+@import 'variables';
+
+.red.base-color {
+  background-color: $red-theme-bg-color;
+}
+
+.red.darken-1 {
+  background-color: $dark-red-1;
+}
+
+.red.darken-2 {
+  background-color: $dark-red-2;
+}
+
+.red.darken-3 {
+  background-color: $dark-red-3;
+}
+
+.red.darken-4 {
+  background-color: $dark-red-4;
+}
+
+.red.lighten-1 {
+  background-color: $light-red-1;
+}
+
+.red.lighten-2 {
+  background-color: $light-red-2;
+}
+
+.red.lighten-3 {
+  background-color: $light-red-3;
+}
+
+.red.lighten-4 {
+  background-color: $light-red-4;
+}
+
+.color-box-text {
+  .base-color & {
+    color: $red-theme-font-color;
+  }
+
+  @for $i from 1 to 5 {
+    .red.darken-#{$i} & {
+      color: $red-theme-alt-font-color;
+    }
+
+    .red.lighten-#{$i} & {
+      color: $red-theme-alt-font-color;
+    }
+  }
+}

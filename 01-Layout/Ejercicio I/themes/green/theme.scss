@@ -1,0 +1,53 @@
+@import 'variables';
+
+.green.base-color {
+  background-color: $green-theme-bg-color;
+}
+
+.green.darken-1 {
+  background-color: $dark-green-1;
+}
+
+.green.darken-2 {
+  background-color: $dark-green-2;
+}
+
+.green.darken-3 {
+  background-color: $dark-green-3;
+}
+
+.green.darken-4 {
+  background-color: $dark-green-4;
+}
+
+.green.lighten-1 {
+  background-color: $light-green-1;
+}
+
+.green.lighten-2 {
+  background-color: $light-green-2;
+}
+
+.green.lighten-3 {
+  background-color: $light-green-3;
+}
+
+.green.lighten-4 {
+  background-color: $light-green-4;
+}
+
+.color-box-text {
+  .base-color & {
+    color: $green-theme-font-color;
+  }
+
+  @for $i from 1 to 5 {
+    .green.darken-#{$i} & {
+      color: $green-theme-alt-font-color;
+    }
+
+    .green.lighten-#{$i} & {
+      color: $green-theme-alt-font-color;
+    }
+  }
+}

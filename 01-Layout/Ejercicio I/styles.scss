@@ -1,0 +1,24 @@
+@import './themes/red/theme.scss';
+@import './themes/blue/theme.scss';
+@import './themes/green/theme.scss';
+
+.container-1 {
+    display: grid;
+    grid-template-areas:
+      "r r r r r r r r r"
+      "b b b b b b b b b"
+      "g g g g g g g g g";
+    grid-template-rows: repeat(3, 4rem);
+    grid-template-columns: repeat(4, 7rem) 9rem repeat(4, 7rem);
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+  }
+  
+  .box {
+    height: 4rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    line-height: 2.5rem;
+  }

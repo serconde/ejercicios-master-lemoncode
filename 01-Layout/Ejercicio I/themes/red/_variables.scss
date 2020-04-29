@@ -1,0 +1,13 @@
+$red-theme-bg-color: #f44336ff;
+$red-theme-font-color: #fff;
+$red-theme-alt-font-color: #36e7edff;
+
+$dark-red-1: darken($red-theme-bg-color, 10%);
+$dark-red-2: darken($red-theme-bg-color, 15%);
+$dark-red-3: darken($red-theme-bg-color, 20%);
+$dark-red-4: darken($red-theme-bg-color, 25%);
+
+$light-red-1: lighten($red-theme-bg-color, 10%);
+$light-red-2: lighten($red-theme-bg-color, 15%);
+$light-red-3: lighten($red-theme-bg-color, 20%);
+$light-red-4: lighten($red-theme-bg-color, 25%);

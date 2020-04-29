@@ -1,0 +1,53 @@
+@import 'variables';
+
+.blue.base-color {
+  background-color: $blue-theme-bg-color;
+}
+
+.blue.darken-1 {
+  background-color: $dark-blue-1;
+}
+
+.blue.darken-2 {
+  background-color: $dark-blue-2;
+}
+
+.blue.darken-3 {
+  background-color: $dark-blue-3;
+}
+
+.blue.darken-4 {
+  background-color: $dark-blue-4;
+}
+
+.blue.lighten-1 {
+  background-color: $light-blue-1;
+}
+
+.blue.lighten-2 {
+  background-color: $light-blue-2;
+}
+
+.blue.lighten-3 {
+  background-color: $light-blue-3;
+}
+
+.blue.lighten-4 {
+  background-color: $light-blue-4;
+}
+
+.color-box-text {
+  .base-color & {
+    color: $blue-theme-font-color;
+  }
+
+  @for $i from 1 to 5 {
+    .blue.darken-#{$i} & {
+      color: $blue-theme-alt-font-color;
+    }
+
+    .blue.lighten-#{$i} & {
+      color: $blue-theme-alt-font-color;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+$green-theme-bg-color: #4caf50ff;
+$green-theme-font-color: #fff;
+$green-theme-alt-font-color: #ae4dabff;
+
+$dark-green-1: darken($green-theme-bg-color, 10%);
+$dark-green-2: darken($green-theme-bg-color, 15%);
+$dark-green-3: darken($green-theme-bg-color, 20%);
+$dark-green-4: darken($green-theme-bg-color, 25%);
+
+$light-green-1: lighten($green-theme-bg-color, 10%);
+$light-green-2: lighten($green-theme-bg-color, 15%);
+$light-green-3: lighten($green-theme-bg-color, 20%);
+$light-green-4: lighten($green-theme-bg-color, 25%);
