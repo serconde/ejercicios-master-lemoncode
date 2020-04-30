@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+@mixin box {
+  font: 1.2rem 'Comic Neue', sans-serif;  
+  border-radius: 2.5px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 5rem;
+  width: 8rem;
+  border: 1px solid grey;
+}
+
+@mixin with-shadow {
+    box-shadow: -10px 18px 11px 1px rgba(0, 0, 0, 0.79);
+}

@@ -1,0 +1,29 @@
+@import './themes/red/theme';
+
+body {
+    font: $principal-font;
+}
+
+.secondary {
+    font: $secondary-font;
+}
+
+.box {
+    @include box;
+}
+
+.box.with-shadow {
+    @include with-shadow;
+}
+
+.box.base {
+    background-color: $base-color;
+}
+
+.box.important {
+    background-color: $important-color;
+}
+
+.box.warning {
+    background-color: $warning-color;
+}
