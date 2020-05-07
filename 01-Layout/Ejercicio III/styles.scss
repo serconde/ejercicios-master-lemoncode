@@ -4,18 +4,18 @@
     padding: 0;
 }
 
-nav {
+.menu-container {
     width: 80vw;
     max-width: 700px;
 
-    ul {
+    .menu {
         display: flex;
         flex-direction: row;        
         list-style: none;
         padding: 0;
         margin: 0;        
 
-        li {
+        .menu-item {
             flex-grow: 1;
             display: inline-block;
             text-align: center; 
@@ -36,7 +36,7 @@ nav {
                 background-color: #2f4858ff;          
             } 
     
-            a {
+            .menu-item-link {
                 padding: 10px;   
                 color:  white;
                 display: block;
@@ -46,18 +46,18 @@ nav {
             }  
         }
     
-        li.active {
+        .menu-item.active {
             background-color: #2f4858ff;
         }         
     }   
 }
 
 @media screen and (max-width: 500px) {
-    nav {        
-        ul {            
+    .menu-container {        
+        .menu {            
             flex-direction: column;
 
-            li {
+            .menu-item {
                 display: block;
     
                 &:nth-child(1) {
