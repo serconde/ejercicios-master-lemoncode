@@ -2,8 +2,8 @@
   display: grid;
   grid-template-areas: "logo . menu";
   grid-template-columns: 1fr 2fr 1fr;
-  padding-bottom: 100px;
-  box-sizing: border-box;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
 
   .header-logo {
     grid-area: logo;
@@ -11,8 +11,8 @@
     align-items: center;
 
     .platform-title {
-      box-sizing: border-box;
-      padding-left: 8px;
+      font-size: 2.6rem;
+      padding-left: 0.8rem;
     }
   }
 
@@ -22,9 +22,9 @@
     justify-content: flex-end;
 
     div {
+      font-size: 1.6rem;
       margin: auto 0;
-      box-sizing: border-box;
-      padding: 20px;
+      padding: 2rem;
       cursor: pointer;
       transition: background-color 0.2s, color 0.2s;
       border-radius: 4px;
@@ -37,9 +37,9 @@
   }
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1280px) {
   .header {
-    padding-bottom: 60px;
+    padding-bottom: 6rem;
     grid-template-areas: "logo . menu";
     grid-template-columns: 2fr 0fr 1fr;
 

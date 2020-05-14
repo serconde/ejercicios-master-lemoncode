@@ -6,10 +6,9 @@
 .top {
   display: flex;
   flex-flow: row-reverse wrap-reverse;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  box-sizing: border-box;
-  padding-bottom: 60px;
+  padding-bottom: 4rem;  
 
   .top-item {
     flex-basis: 20%;
@@ -29,8 +28,7 @@
 
   .top {
     .top-item {
-      flex-basis: 33%;
-      flex-grow: 2;
+      flex-basis: 33%;        
     }
 
     .top-item:nth-child(1),
@@ -39,5 +37,12 @@
       min-width: 0;
       visibility: hidden;
     }
+  }
+}
+
+
+@media screen and (max-width: 710px) {
+  .top {
+    flex-direction: column-reverse;
   }
 }
