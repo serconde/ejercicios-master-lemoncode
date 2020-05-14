@@ -1,0 +1,52 @@
+.header {
+  display: grid;
+  grid-template-areas: "logo . menu";
+  grid-template-columns: 1fr 2fr 1fr;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+
+  .header-logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+
+    .platform-title {
+      box-sizing: border-box;
+      padding-left: 8px;
+    }
+  }
+
+  .header-buttons {
+    grid-area: menu;
+    display: flex;
+    justify-content: flex-end;
+
+    div {
+      margin: auto 0;
+      box-sizing: border-box;
+      padding: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    padding-bottom: 60px;
+    grid-template-areas: "logo . menu";
+    grid-template-columns: 2fr 0fr 1fr;
+
+    .header-logo {
+      .platform-title {
+        @include hidden();
+      }
+    }
+  }
+}
