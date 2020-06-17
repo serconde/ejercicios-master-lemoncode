@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+$background-color: rgb(24, 22, 22);
+$font-color: whitesmoke;
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+:root {
+    background: $background-color;
+    color: $font-color;
+    text-align: center;
+    font-family: "Major Mono Display";
+}
+
+.title {
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 40vh;
+    font-size: 80px;
+}
+
+img {
+    height: 900px;
+}
