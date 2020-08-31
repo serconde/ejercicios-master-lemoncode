@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+@import "../../styles.scss";
+
+:host {
+  height: $component-height;
+  display: $component-display;
+}
+
+p {
+  @include component-p;
+}

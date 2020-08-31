@@ -1,0 +1,19 @@
+
+@import "../../variables.scss";
+
+:host {
+  height: $component-height;
+  display: $component-display;
+}
+
+
+mat-card {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  top: 3em;
+}
+
+mat-form-field {
+  display: block;
+}
