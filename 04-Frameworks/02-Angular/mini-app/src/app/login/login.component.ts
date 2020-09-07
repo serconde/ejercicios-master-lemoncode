@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   public loginInvalid: boolean;
   private returnUrl: string;
+  public logging: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,10 +38,19 @@ export class LoginComponent implements OnInit {
     this.loginInvalid = false;
 
     if (this.loginForm.valid) {
-        const username = this.loginForm.get('username').value;
-        const password = this.loginForm.get('password').value;
-        this.loginInvalid = !this.authService.login(username, password);
-        if (!this.loginInvalid) await this.router.navigate([this.returnUrl]);
+      const username = this.loginForm.get('username').value;
+      const password = this.loginForm.get('password').value;
+      const observable = this.authService.login(username, password);
+      this.logging = true;
+      observable.subscribe(
+        async (flag: boolean) =>
+          !(this.logging = false) && (await this.loggedIn(flag))
+      );
     }
+  }
+
+  async loggedIn(flag: boolean) {
+    if (flag) await this.router.navigate([this.returnUrl]);
+    else this.loginInvalid = true;
   }
 }

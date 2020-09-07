@@ -25,9 +25,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { ImageService } from './image.service';
+import { RotateDirective } from './rotate.directive';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,7 @@ import { AuthGuard } from './auth.guard';
     PrivateMenuComponent,
     PublicMainComponent,
     PrivateMainComponent,
+    RotateDirective,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +62,10 @@ import { AuthGuard } from './auth.guard';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ImageService ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

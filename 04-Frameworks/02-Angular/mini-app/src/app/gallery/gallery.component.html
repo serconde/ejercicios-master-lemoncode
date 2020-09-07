@@ -1,1 +1,15 @@
-<p>gallery works!</p>
+<div class="container">
+  <img rotate="45" class="image" [style.width]="imageWidth" [style.height]="imageHeight" async=on [src]="currentImageUrl">
+  <div class="buttonBar">
+    <button mat-raised-button color="secondary" [disabled]="prevImageDisabled" (click)="prevImage()">Previous</button>
+    <button mat-raised-button color="secondary" [disabled]="nextImageDisabled" (click)="nextImage()">Next</button>
+    <button mat-raised-button color="secondary" [disabled]="zoomInDisabled" (click)="zoomIn()">Zoom In</button>
+    <button mat-raised-button color="secondary" [disabled]="zoomOutDisabled" (click)="zoomOut()">Zoom Out</button>
+    <button mat-raised-button color="secondary" (click)="play($event)">Play</button>
+  </div>
+  <div class="selector">
+    <button mat-raised-button color="secondary" [disabled]="prevPageDisabled" (click)="prevPage()">Prev. Page</button>
+    <img async=on *ngFor="let imgUrl of imageUrls; let imageIndex = index" class="miniature" [ngClass]="{selected: currentImageIndex === imageIndex}" [src]="imgUrl">
+    <button mat-raised-button color="secondary" [disabled]="nextPageDisabled" (click)="nextPage()">Next Page</button>
+  </div>
+</div>

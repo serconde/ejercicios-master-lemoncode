@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 interface LoginUser {
   username: string;
@@ -21,7 +23,7 @@ export class AuthService {
     this.username = localStorage.getItem('username');
   }
 
-  public login(username: string, password: string): boolean {
+  public login(username: string, password: string) : Observable<boolean> {
     const isValid = this.users.some(
       (u) => u.username === username && u.password === password
     );
@@ -31,7 +33,7 @@ export class AuthService {
       localStorage.setItem('username', this.username);
     }
 
-    return isValid;
+    return of(isValid).pipe(delay(2000));
   }
 
   public logout(): void {

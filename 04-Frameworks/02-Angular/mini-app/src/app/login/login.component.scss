@@ -17,3 +17,26 @@ mat-card {
 mat-form-field {
   display: block;
 }
+
+mat-spinner {
+  margin: auto;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #d9d900 !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #d9d900 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #d9d900 !important;;
+}
+
+::ng-deep.mat-progress-spinner circle, ::ng-deep.mat-spinner circle {
+  stroke: #d9d900 !important;
+}
