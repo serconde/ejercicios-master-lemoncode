@@ -12,10 +12,14 @@ export const fetchRecipeById = (id: number): Promise<Recipe> => {
   return Promise.resolve(recipe as Recipe);
 };
 
+export const deleteRecipeById = (id: number): void => {
+  recipes = recipes.filter(r => r.id !== id);
+};
+
 export const save = (recipe: Recipe): Promise<string> => {
   const index = recipes.findIndex((r) => r.id === recipe.id);
 
-  return index >= 0 ? saveRecipeByIndex(index, recipe) : Promise.reject("Something was wrong saving recipe :(");
+  return index >= 0 ? saveRecipeByIndex(index, recipe) : saveRecipeByIndex(recipes.length, recipe) ;
 };
 
 const saveRecipeByIndex = (index: number, recipe: Recipe): Promise<string> => {

@@ -29,12 +29,16 @@ export default Vue.extend({
     };
   },
   beforeMount() {
-    const id = Number(this.id || 0);
-    fetchRecipeById(id)
-      .then((recipe) => {
-        this.recipe = mapRecipeModelToVm(recipe);
-      })
-      .catch((error) => console.log(error));
+    if (!!this.id) {
+      const id = Number(this.id);
+      fetchRecipeById(id)
+        .then((recipe) => {
+          this.recipe = mapRecipeModelToVm(recipe);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      this.recipe = createEmptyRecipe();
+    }
   },
   methods: {
     onUpdateRecipe(field: string, value: string) {

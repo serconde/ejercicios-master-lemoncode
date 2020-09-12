@@ -17,8 +17,11 @@
   </v-snackbar>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: "LogoutButton",
   props: {
       color: "",
       mode: "",
@@ -28,5 +31,5 @@ export default {
       x: null,
       y: "bottom",
   }
-};
+});
 </script>

@@ -4,6 +4,7 @@
       <v-btn text icon :to="routeEdit(item)">
         <v-icon small class="mr-2">mdi-pencil</v-icon>
       </v-btn>
+      <v-icon small @click="deleteRecipe(item)">mdi-delete</v-icon>
     </template>
   </v-data-table>
 </template>
@@ -16,6 +17,7 @@ import { baseRoutes } from "../../../../router";
 export default {
   props: {
     recipes: { required: true } as PropOptions<Recipe[]>,
+    deleteRecipe: { required: true } as PropOptions<(recipe: Recipe) => void>,
   },
   data: () => ({
     headers: [
@@ -34,6 +36,7 @@ export default {
         text: "Actions",
         value: "actions",
         sortable: false,
+        width: 100
       },
     ],
   }),

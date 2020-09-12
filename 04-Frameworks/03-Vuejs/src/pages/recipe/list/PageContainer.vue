@@ -1,10 +1,10 @@
 <template>
-  <recipe-list-page v-bind="{ searchText, recipes: filteredRecipes, onSearch }" />
+  <recipe-list-page v-bind="{ searchText, recipes: filteredRecipes, onSearch, deleteRecipe }" />
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { fetchRecipes } from "../../../rest-api/api/recipe";
+import { deleteRecipeById, fetchRecipes } from "../../../rest-api/api/recipe";
 import { filterRecipesByCommaSeparatedText } from "./business/filterRecipeBusiness";
 import { mapRecipeListModelToVm } from "./mapper";
 import { Recipe } from "./viewModel";
@@ -36,6 +36,14 @@ export default Vue.extend({
   methods: {
     onSearch(value: string) {
       this.searchText = value;
+    },
+    deleteRecipe(recipe: Recipe) {
+      deleteRecipeById(recipe.id);
+      fetchRecipes()
+        .then((recipes) => {
+          this.recipes = mapRecipeListModelToVm(recipes);
+        })
+        .catch((error) => console.log(error));
     },
   },
 });

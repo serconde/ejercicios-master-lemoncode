@@ -2,11 +2,15 @@
   <app-layout>
     <v-card>
       <v-card-title class="text-h4">
-        Recipes
+        Recipes&nbsp;
+        <v-btn text icon to="/recipe/add">
+          <v-icon large class="mr-2">mdi-plus</v-icon>
+        </v-btn>
       </v-card-title>
+
       <v-card-text>
         <search-bar-component :search-text="searchText" :on-search="onSearch" />
-        <data-table-component :recipes="recipes" />
+        <data-table-component :recipes="recipes" :deleteRecipe="deleteRecipe" />
       </v-card-text>
     </v-card>
   </app-layout>
@@ -25,6 +29,7 @@ export default Vue.extend({
     recipes: { required: true } as PropOptions<Recipe[]>,
     searchText: String,
     onSearch: { required: true } as PropOptions<(value: string) => void>,
+    deleteRecipe: { required: true } as PropOptions<(recipe: Recipe) => void>,
   },
 });
 </script>
