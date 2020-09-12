@@ -4,9 +4,8 @@
       filled
       label="Name"
       :value="recipe.name"
-      :rules="[resultRecipeError]"
+      :rules="[resultRecipeNameError]"
       @input="(name) => onUpdateRecipe('name', name)"
-      @click:append="onAddIngredient(ingredient)"
     />
 
     <v-text-field
@@ -14,6 +13,7 @@
       label="Ingredients"
       placeholder="Add ingredient"
       append-icon="add"
+      :rules="[resultRecipeIngredientsError]"
       v-model="ingredient"
       @click:append="onAddIngredient(ingredient)"
     />
@@ -24,11 +24,27 @@
       recipeError.ingredients.message
     }}</v-alert>
 
+    <v-text-field
+      filled
+      label="Photo Url"
+      placeholder="Enter the recipe's photo url"
+      :value="recipe.imageUrl"
+      :rules="[resultRecipeImageUrlError]"
+      @input="(imageUrl) => onUpdateRecipe('imageUrl', imageUrl)"
+    />
+
+    <v-img
+      alt="Recipe photo"
+      :src="recipe.imageUrl"    
+      width="400"    
+    /><br>
+
     <v-textarea
       label="Description"
       filled
       placeholder="Description...."
       rows="10"
+      :rules="[resultRecipeDescriptionError]"
       :value="recipe.description"
       :no-resize="true"
       @input="(value) => onUpdateRecipe('description', value)"
@@ -56,13 +72,24 @@ export default Vue.extend({
   } as FormProps,
   data() {
     return {
-      ingredient: "",
+      ingredient: ""
     };
   },
   computed: {
-    resultRecipeError(): boolean | string {
+    resultRecipeNameError(): boolean | string {
       return this.recipeError.name.succeeded || this.recipeError.name.message;
     },
+    resultRecipeIngredientsError(): boolean | string {
+      return this.recipeError.ingredients.succeeded || this.recipeError.ingredients.message;
+    },
+
+    resultRecipeDescriptionError(): boolean | string {
+      return this.recipeError.description.succeeded || this.recipeError.description.message;
+    },
+
+    resultRecipeImageUrlError(): boolean | string {
+      return this.recipeError.imageUrl.succeeded || this.recipeError.imageUrl.message;
+    }
   },
 });
 </script>

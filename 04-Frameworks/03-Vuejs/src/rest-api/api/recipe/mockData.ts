@@ -10,6 +10,7 @@ export const mockRecipes: Recipe[] = [
      3. When the omelette begins to cook and firm up, but still has a little raw egg on top, sprinkle over the cheese (if using).
      4. Using a spatula, ease around the edges of the omelette, then fold it over in half. When it starts to turn golden brown underneath, remove the pan from the heat and slide the omelette on to a plate.
     `,
+    imageUrl: "",
     ingredients: ["2 eggs", "cheese", "salt", "black pepper"],
   },
   {
@@ -20,6 +21,7 @@ export const mockRecipes: Recipe[] = [
      2. Sprinkle with lemon juice, and season with salt and pepper.
      3. Garnish salad with thin lemon slices.
     `,
+    imageUrl: "",
     ingredients: ["salad", "2 tomatoes", "2 avocados", "1 tooth garlic", "1 onion", "lemon juice", "salt", "pepper"],
   },
   {
@@ -30,6 +32,7 @@ export const mockRecipes: Recipe[] = [
      2. In a large pot, combine beef, salt, oregano, pepper, garlic powder, onion flakes, diced tomatoes, tomato sauce, and mushrooms. Simmer at a low heat setting for 2 hours, stirring occasionally
      3. Cook pasta according to package directions. Drain. Serve sauce over spaghetti.
     `,
+    imageUrl: "",
     ingredients: [
       "spaghetti",
       "1 beef",

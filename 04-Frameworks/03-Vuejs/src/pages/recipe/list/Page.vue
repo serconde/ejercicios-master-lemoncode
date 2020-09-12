@@ -6,7 +6,7 @@
       </v-card-title>
       <v-card-text>
         <search-bar-component :search-text="searchText" :on-search="onSearch" />
-        <table-component :recipes="recipes" />
+        <data-table-component :recipes="recipes" />
       </v-card-text>
     </v-card>
   </app-layout>
@@ -16,11 +16,11 @@
 import Vue, { PropOptions } from "vue";
 import { AppLayout } from "../../../common/layouts";
 import { Recipe } from "./viewModel";
-import { TableComponent, SearchBarComponent } from "./components";
+import { DataTableComponent, SearchBarComponent } from "./components";
 
 export default Vue.extend({
   name: "RecipeListPage",
-  components: { AppLayout, TableComponent, SearchBarComponent },
+  components: { AppLayout, DataTableComponent, SearchBarComponent },
   props: {
     recipes: { required: true } as PropOptions<Recipe[]>,
     searchText: String,

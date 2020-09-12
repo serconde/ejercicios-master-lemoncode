@@ -1,5 +1,10 @@
 <template>
-  <recipe-edit-page v-bind="{ recipe, recipeError, onUpdateRecipe, onAddIngredient, onSave, onRemoveIngredient }" />
+  <div>
+    <recipe-edit-page
+      v-bind="{ recipe, recipeError, onUpdateRecipe, onAddIngredient, onSave, onRemoveIngredient }"
+    />
+    <snack-bar-component v-bind="{ snackbar, message }"></snack-bar-component>
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,15 +14,18 @@ import { fetchRecipeById, save } from "../../../rest-api/api/recipe";
 import { mapRecipeModelToVm, mapRecipeVmToModel } from "./mapper";
 import { createEmptyRecipe, createEmptyRecipeError } from "./viewModel";
 import { validations } from "./validations";
+import { SnackBarComponent } from "../../../common/components";
 
 export default Vue.extend({
   name: "RecipeEditPageContainer",
-  components: { RecipeEditPage },
+  components: { RecipeEditPage, SnackBarComponent },
   props: { id: String },
   data() {
     return {
       recipe: createEmptyRecipe(),
       recipeError: createEmptyRecipeError(),
+      snackbar: false,
+      message: "",
     };
   },
   beforeMount() {
@@ -42,10 +50,14 @@ export default Vue.extend({
           const recipe = mapRecipeVmToModel(this.recipe);
           save(recipe)
             .then((message) => {
-              console.log(message);
-              this.$router.back();
+              this.snackbar = true;
+              this.message = message;
+              setTimeout(() => this.$router.back(), 2500);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+              this.snackbar = true;
+              this.message = error;
+            });
         } else {
           this.recipeError = {
             ...this.recipeError,
@@ -64,12 +76,16 @@ export default Vue.extend({
     onRemoveIngredient(ingredient: string) {
       this.recipe = {
         ...this.recipe,
-        ingredients: this.recipe.ingredients.filter((item) => item !== ingredient),
+        ingredients: this.recipe.ingredients.filter(
+          (item) => item !== ingredient
+        ),
       };
       this.validateRecipeField("ingredients", this.recipe.ingredients);
     },
     validateRecipeField(field, value) {
-      validations.validateField(field, value).then((result) => this.updateRecipeError(field, result));
+      validations
+        .validateField(field, value)
+        .then((result) => this.updateRecipeError(field, result));
     },
     updateRecipeError(field, result) {
       this.recipeError = {
