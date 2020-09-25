@@ -8,6 +8,7 @@ import {
   Avatar,
   IconButton,
   withStyles,
+  Button
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -15,10 +16,10 @@ import { css } from 'emotion';
 import { PictureInfo } from 'common/vm/picture.vm';
 
 const headerStyles = css`
-    box-sizing: border-box;
-    padding-left: 12px;
-    display: grid;
-    grid-template-columns: 0.3fr 1.2fr 1fr;
+  box-sizing: border-box;
+  padding-left: 12px;
+  display: grid;
+  grid-template-columns: 0.3fr 1.2fr 1fr;
 `;
 
 const headerTitleStyles = css`
@@ -34,16 +35,27 @@ const EmptyTrashButton = withStyles({
   },
 })(IconButton);
 
+
+const CheckoutButton = withStyles({
+  root: {
+    backgroundColor: "#d2a679",
+    '&:hover': {
+      backgroundColor: "#604020",
+      color: '#fff',
+    }
+  },
+})(Button)
+
 interface ShoppingCartProps {
   pictures: PictureInfo[];
   onRemovePicture: (pictureId: string) => void;
-  onEmptyShoppingCart: () => void
+  onEmptyShoppingCart: () => void;
 }
 
 export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
   pictures,
   onRemovePicture,
-  onEmptyShoppingCart
+  onEmptyShoppingCart,
 }) => {
   const handleClickRemove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -52,7 +64,7 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
   };
 
   const handleClickEmptyCart = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>    
+    event: React.MouseEvent<HTMLElement, MouseEvent>
   ): void => {
     onEmptyShoppingCart();
   };
@@ -83,6 +95,11 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
           );
         })}
       </List>
+      {pictures.length > 0 && (
+        <CheckoutButton variant="contained">
+          Go to Checkout
+        </CheckoutButton>
+      )}
     </div>
   );
 };
