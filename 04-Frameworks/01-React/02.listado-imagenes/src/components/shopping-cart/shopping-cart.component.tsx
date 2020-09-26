@@ -8,25 +8,13 @@ import {
   Avatar,
   IconButton,
   withStyles,
-  Button
+  Button,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { css } from 'emotion';
 import { PictureInfo } from 'common/vm/picture.vm';
-
-const headerStyles = css`
-  box-sizing: border-box;
-  padding-left: 12px;
-  display: grid;
-  grid-template-columns: 0.3fr 1.2fr 1fr;
-`;
-
-const headerTitleStyles = css`
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-left: 10px;
-`;
+import * as classes from './shopping-cart.styles';
+import { formatCurrency } from 'common/utils';
 
 const EmptyTrashButton = withStyles({
   root: {
@@ -35,27 +23,39 @@ const EmptyTrashButton = withStyles({
   },
 })(IconButton);
 
-
 const CheckoutButton = withStyles({
   root: {
-    backgroundColor: "#d2a679",
+    backgroundColor: '#d2a679',
     '&:hover': {
-      backgroundColor: "#604020",
+      backgroundColor: '#604020',
       color: '#fff',
-    }
+    },
   },
-})(Button)
+})(Button);
+
+const ListItemName = withStyles({
+  root: {
+    width: '100px',
+  },
+})(ListItemText);
+
+const getTotal = (prices: number[]) =>
+  prices.reduce((sum, price) => sum + price);
 
 interface ShoppingCartProps {
   pictures: PictureInfo[];
   onRemovePicture: (pictureId: string) => void;
   onEmptyShoppingCart: () => void;
+  locale: string;
+  currency: string;
 }
 
 export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
   pictures,
   onRemovePicture,
   onEmptyShoppingCart,
+  locale,
+  currency,
 }) => {
   const handleClickRemove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -71,9 +71,9 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
 
   return (
     <div>
-      <div className={headerStyles}>
+      <div className={classes.headerStyles}>
         <ShoppingCartIcon style={{ fontSize: 40 }}></ShoppingCartIcon>
-        <h2 className={headerTitleStyles}>Cart</h2>
+        <h2 className={classes.headerTitleStyles}>Cart</h2>
         {pictures.length > 0 && (
           <EmptyTrashButton onClick={handleClickEmptyCart}>
             <DeleteIcon />
@@ -87,18 +87,31 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
               <ListItemAvatar>
                 <Avatar alt={p.name} src={'images/' + p.picUrl} />
               </ListItemAvatar>
-              <ListItemText primary={p.name} />
+              <ListItemName primary={p.name} />
+              <ListItemText
+                secondary={formatCurrency(p.price, locale, currency)}
+              />
               <ListItemIcon data-id={p.id} onClick={handleClickRemove}>
                 <DeleteIcon />
               </ListItemIcon>
             </ListItem>
           );
         })}
+        {pictures.length > 0 && (
+          <ListItem button key="total">
+            <ListItemName primary="Total" />
+            <ListItemText
+              secondary={formatCurrency(
+                getTotal(pictures.map((p) => p.price)),
+                locale,
+                currency
+              )}
+            />
+          </ListItem>
+        )}
       </List>
       {pictures.length > 0 && (
-        <CheckoutButton variant="contained">
-          Go to Checkout
-        </CheckoutButton>
+        <CheckoutButton variant="contained">Go to Checkout</CheckoutButton>
       )}
     </div>
   );

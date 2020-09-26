@@ -1,11 +1,14 @@
-import React from "react";
-import { ShoppingCartComponent } from "./shopping-cart.component";
-import { ShopContext } from "common/context/picture-shop.context";
+import React from 'react';
+import { ShoppingCartComponent } from './shopping-cart.component';
+import { ShopContext } from 'common/context/picture-shop.context';
 
 export const ShoppingCartContainer: React.FC = () => {
-  const { selectedPictures, setSelectedPictures } = React.useContext(
-    ShopContext
-  );
+  const {
+    selectedPictures,
+    setSelectedPictures,
+    locale,
+    currency,
+  } = React.useContext(ShopContext);
 
   const onRemovePicture = (pictureId: string) => {
     const pictureToRemove = selectedPictures.find((p) => p.id === pictureId);
@@ -18,15 +21,17 @@ export const ShoppingCartContainer: React.FC = () => {
   };
 
   const onEmptyShoppingCart = () => {
-    selectedPictures.forEach(p => p.selected = false);
+    selectedPictures.forEach((p) => (p.selected = false));
     setSelectedPictures([]);
-  }
+  };
 
   return (
     <ShoppingCartComponent
       pictures={selectedPictures}
       onRemovePicture={onRemovePicture}
       onEmptyShoppingCart={onEmptyShoppingCart}
+      locale={locale}
+      currency={currency}
     ></ShoppingCartComponent>
   );
 };

@@ -1,9 +1,9 @@
-import React from "react";
-import { PictureInfo } from "common/vm/picture.vm";
-import { ShopContext } from "common/context/picture-shop.context";
-import { getPicturesByCategory } from "api/picture-list.api";
-import { mapPictureInfoListFromApiToVm } from "common/vm/picture.mapper";
-import { PictureListComponent } from "./picture-list.component";
+import React from 'react';
+import { PictureInfo } from 'common/vm/picture.vm';
+import { ShopContext } from 'common/context/picture-shop.context';
+import { getPicturesByCategory } from 'api/picture-list.api';
+import { mapPictureInfoListFromApiToVm } from 'common/vm/picture.mapper';
+import { PictureListComponent } from './picture-list.component';
 
 interface PictureListContainerProps {
   pictureCategory: string;
@@ -12,9 +12,12 @@ interface PictureListContainerProps {
 export const PictureListContainer: React.FC<PictureListContainerProps> = ({
   pictureCategory,
 }) => {
-  const { selectedPictures, setSelectedPictures } = React.useContext(
-    ShopContext
-  );
+  const {
+    selectedPictures,
+    setSelectedPictures,
+    locale,
+    currency,
+  } = React.useContext(ShopContext);
   const [pictures, setPictures] = React.useState<PictureInfo[]>([]);
 
   const loadPictureList = async (category: string) => {
@@ -44,10 +47,11 @@ export const PictureListContainer: React.FC<PictureListContainerProps> = ({
   }, [pictureCategory]);
 
   return (
-
-      <PictureListComponent
-        pictures={pictures}
-        onSelectPicture={handleSelectPicture}
-      ></PictureListComponent>
+    <PictureListComponent
+      pictures={pictures}
+      onSelectPicture={handleSelectPicture}
+      locale={locale}
+      currency={currency}
+    ></PictureListComponent>
   );
 };

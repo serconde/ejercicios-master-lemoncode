@@ -1,7 +1,7 @@
-import React from "react";
-import { css } from "emotion";
-import { Link, useLocation } from "react-router-dom";
-import { AppBar, withStyles } from "@material-ui/core";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { AppBar, withStyles } from '@material-ui/core';
+import * as classes from './picture-list.styles';
 
 interface PictureListMenuProps {
   pictureCategories: string[];
@@ -9,34 +9,10 @@ interface PictureListMenuProps {
 
 const StyledAppBar = withStyles({
   root: {
-      background: "#d2a679",
-      marginBottom: "20px",
-  }
+    background: '#d2a679',
+    marginBottom: '20px',
+  },
 })(AppBar);
-
-const navLink = css`
-  box-sizing: border-box;
-  padding: 6px 12px;
-  margin-right: 0.5em;
-  display: inline-block;
-  color: #000;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-    color: #fff;
-    background-color: #604020;
-  }
-`;
-
-const navLinkActive = css`
-  box-sizing: border-box;
-  padding: 6px 12px;
-  margin-right: 0.5em;
-  display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  background-color: #604020;
-`;
 
 export const PictureListMenu: React.FC<PictureListMenuProps> = ({
   pictureCategories,
@@ -50,7 +26,11 @@ export const PictureListMenu: React.FC<PictureListMenuProps> = ({
           <Link
             key={pc}
             to={`/${pc}`}
-            className={pc === pathname.substring(1) ? navLinkActive : navLink}
+            className={
+              pc === pathname.substring(1)
+                ? classes.navLinkActive
+                : classes.navLink
+            }
           >
             {pc}
           </Link>
