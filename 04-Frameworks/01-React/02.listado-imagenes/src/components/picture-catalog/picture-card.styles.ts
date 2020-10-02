@@ -3,6 +3,7 @@ import { css } from 'emotion';
 export const pictureCardStyles = css`
   box-sizing: border-box;
   padding: 20px;  
+  width: 140px;
 `;
 
 export const imageStyles = css`

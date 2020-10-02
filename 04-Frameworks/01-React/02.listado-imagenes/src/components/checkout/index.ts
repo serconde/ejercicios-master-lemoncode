@@ -1,1 +1,1 @@
-//export * from './checkout-container'
+export * from './payment-form.container';

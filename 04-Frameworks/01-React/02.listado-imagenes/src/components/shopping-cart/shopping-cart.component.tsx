@@ -8,13 +8,16 @@ import {
   Avatar,
   IconButton,
   withStyles,
-  Button,
+  Snackbar,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Alert } from '@material-ui/lab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { PictureInfo } from 'common/vm/picture.vm';
 import * as classes from './shopping-cart.styles';
 import { formatCurrency } from 'common/utils';
+import { PaymentFormContainer } from 'components/checkout';
+import { StyledButton } from 'common/components';
 
 const EmptyTrashButton = withStyles({
   root: {
@@ -22,16 +25,6 @@ const EmptyTrashButton = withStyles({
     paddingTop: '7px',
   },
 })(IconButton);
-
-const CheckoutButton = withStyles({
-  root: {
-    backgroundColor: '#d2a679',
-    '&:hover': {
-      backgroundColor: '#604020',
-      color: '#fff',
-    },
-  },
-})(Button);
 
 const ListItemName = withStyles({
   root: {
@@ -57,6 +50,9 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
   locale,
   currency,
 }) => {
+  const [proceedToCheckout, setProceedToCheckout] = React.useState(false);
+  const [paymentDone, setPaymentDone] = React.useState(false);
+
   const handleClickRemove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ): void => {
@@ -67,6 +63,19 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
     event: React.MouseEvent<HTMLElement, MouseEvent>
   ): void => {
     onEmptyShoppingCart();
+  };
+
+  const handleClickCheckout = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ): void => setProceedToCheckout(true);
+
+  const handleOnClosePaymentDone = () => setPaymentDone(false);
+
+  const onCloseCheckout = () => setProceedToCheckout(false);
+
+  const onPaymentDone = () => {
+    setProceedToCheckout(false);
+    setPaymentDone(true);
   };
 
   return (
@@ -111,8 +120,28 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
         )}
       </List>
       {pictures.length > 0 && (
-        <CheckoutButton variant="contained">Go to Checkout</CheckoutButton>
+        <StyledButton variant="contained" onClick={handleClickCheckout}>
+          Go to Checkout
+        </StyledButton>
       )}
+      <PaymentFormContainer
+        locale={locale}
+        currency={currency}
+        total={getTotal(!!pictures.length ? pictures.map((p) => p.price) : [0])}
+        opened={proceedToCheckout}
+        onClose={onCloseCheckout}
+        onPaymentDone={onPaymentDone}
+      />
+      <Snackbar
+        open={paymentDone}
+        autoHideDuration={3000}
+        onClose={handleOnClosePaymentDone}
+        key="topcenter"
+      >
+        <Alert severity="success" onClose={handleOnClosePaymentDone}>
+          Thank you for your purchase!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
