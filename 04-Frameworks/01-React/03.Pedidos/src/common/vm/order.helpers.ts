@@ -3,9 +3,10 @@ import { OrderHeader, OrderLine, OrderLineStatus } from './order.vm';
 
 export const today = () => {
   const now = new Date();
-  return `${now.getFullYear()}-${(now.getMonth() + '').padStart(2, '0')}-${(
-    now.getDay() + ''
-  ).padStart(2, '0')}`;
+  const day = now.getDate().toString().padStart(2, '0');
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const year = now.getFullYear().toString();
+  return `${year}-${month}-${day}`;
 };
 
 export const maxOrderLines = 20;

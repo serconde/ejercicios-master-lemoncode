@@ -49,7 +49,8 @@ export const OrderHeaderComponent: React.FC<Props> = ({
                   component={TextField}
                   size="small"
                   variant="outlined"                  
-                  onChange={handleFieldChange}                  
+                  onChange={handleFieldChange}
+                  value={header.reference}                
                 />
               </Grid>
               <Grid item>
@@ -61,7 +62,8 @@ export const OrderHeaderComponent: React.FC<Props> = ({
                   component={TextField}
                   size="small"
                   variant="outlined"
-                  onChange={handleFieldChange}    
+                  onChange={handleFieldChange}
+                  value={header.provider}  
                 />
               </Grid>
               <Grid item>
@@ -74,7 +76,8 @@ export const OrderHeaderComponent: React.FC<Props> = ({
                   component={TextField}
                   size="small"
                   variant="outlined"
-                  onChange={handleFieldChange}    
+                  onChange={handleFieldChange}
+                  value={header.date}      
                 />
               </Grid>
             </Grid>

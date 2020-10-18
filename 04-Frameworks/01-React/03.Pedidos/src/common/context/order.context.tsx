@@ -15,7 +15,7 @@ export const OrderContext = React.createContext<Context>({
   setLines: (lines: Array<OrderLine>) => {},
 });
 
-export const OrderContextProvider: React.FC = ({ children }) => {
+export const OrderContextProvider: React.FC = ({ children }) => {  
   const [header, setHeader] = React.useState(createEmptyOrderHeader());
   const [lines, setLines] = React.useState(creatyEmptyOrderLines(maxOrderLines));
 

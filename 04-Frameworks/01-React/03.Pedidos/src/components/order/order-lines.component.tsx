@@ -24,28 +24,32 @@ interface Column {
   id: 'selected' | 'status' | 'amount' | 'description';
   label: string;
   minWidth?: number;
-  align?: 'right';
 }
 
 const columns: Column[] = [
   { id: 'selected', label: '', minWidth: 30 },
-  { id: 'status', label: 'Estado'},
+  { id: 'status', label: 'Estado', minWidth: 100 },
   {
     id: 'description',
     label: 'Descripción',
+    minWidth: 500,
   },
   {
     id: 'amount',
-    label: 'Importe',
-    align: 'right',    
+    label: 'Importe (€)',
+    minWidth: 100,
   },
 ];
 
 export const OrderLinesComponent: React.FC<Props> = ({ lines, setLines }) => {
+  const [checked, setChecked] = React.useState(false);
   const isValidOrderLine = (lineNumber: number): boolean =>
-    !!lines[lineNumber].description && !!lines[lineNumber].amount;
+    !!lines[lineNumber].description && (lines[lineNumber].amount === 0 || !!lines[lineNumber].amount);
 
   const isOrderLineChecked = (index: number): boolean => lines[index].selected;
+
+  const getOrderLineStatus = (orderLineNumber: number) =>
+    isValidOrderLine(orderLineNumber) ? lines[orderLineNumber].status : '';
 
   const validateSelected = (validate: boolean) => {
     const orderLinesFilledIn = lines.filter(
@@ -63,14 +67,21 @@ export const OrderLinesComponent: React.FC<Props> = ({ lines, setLines }) => {
     setLines([...lines]);
   };
 
-
   const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     const [fieldName, orderLineNumber] = e.currentTarget.name.split('-');
     const orderLine: OrderLine = lines[orderLineNumber];
-    orderLine[fieldName] = e.currentTarget.type === "number" ? Number.parseFloat(e.currentTarget.value) : e.currentTarget.value;
+    orderLine[fieldName] =
+      e.currentTarget.type === 'number'
+        ? Number.parseFloat(e.currentTarget.value)
+        : e.currentTarget.value;
     orderLine.selected =
       orderLine.selected && !!orderLine.description && !!orderLine.amount;
-    orderLine.status =  orderLine.status === OrderLineStatus.Validated &&  !!orderLine.description && !!orderLine.amount ? OrderLineStatus.Validated : OrderLineStatus.Pending;
+    orderLine.status =
+      orderLine.status === OrderLineStatus.Validated &&
+      !!orderLine.description &&
+      !!orderLine.amount
+        ? OrderLineStatus.Validated
+        : OrderLineStatus.Pending;
     setLines([...lines]);
   };
 
@@ -81,11 +92,14 @@ export const OrderLinesComponent: React.FC<Props> = ({ lines, setLines }) => {
     setLines([...lines]);
   };
 
-  const getOrderLineStatus = (orderLineNumber: number) =>
-    isValidOrderLine(orderLineNumber)
-      ? lines[orderLineNumber].status
-      : '';
-      
+  const handleCheckAll = (e: ChangeEvent<HTMLInputElement>) => {
+    lines
+      .filter((l) => !!l.description && !!l.amount)
+      .map((l) => (l.selected = !checked));
+    setChecked(!checked);
+    setLines([...lines]);
+  };
+
   return (
     <div>
       <br></br>
@@ -121,10 +135,13 @@ export const OrderLinesComponent: React.FC<Props> = ({ lines, setLines }) => {
                     {columns.map((column) => (
                       <TableCell
                         key={column.id}
-                        align={column.align}
                         style={{ minWidth: column.minWidth }}
                       >
-                        {column.label === '' ? '' : column.label}
+                        {column.label === '' ? (
+                          <Checkbox name="checkAll" onChange={handleCheckAll} />
+                        ) : (
+                          column.label
+                        )}
                       </TableCell>
                     ))}
                   </TableRow>
@@ -135,27 +152,36 @@ export const OrderLinesComponent: React.FC<Props> = ({ lines, setLines }) => {
                       <TableRow hover tabIndex={-1} key={index}>
                         {columns.map((column) => {
                           return (
-                            <TableCell key={column.id} align={column.align}>
+                            <TableCell key={column.id}>
                               {column.id === 'selected' ? (
                                 <Checkbox
                                   inputProps={{ name: `${column.id}-${index}` }}
                                   disabled={!isValidOrderLine(index)}
-                                  onChange={handleOrderLineCheck} 
-                                  checked={isOrderLineChecked(index)}                                 
+                                  onChange={handleOrderLineCheck}
+                                  checked={isOrderLineChecked(index)}
+                                  style={{ minWidth: column.minWidth }}
                                 />
-                              ) : column.id != 'status' ? (
+                              ) : column.id !== 'status' ? (
                                 <TextField
                                   type={
-                                    column.id == 'amount' ? 'number' : 'text'
+                                    column.id === 'amount' ? 'number' : 'text'
                                   }
                                   inputProps={{ name: `${column.id}-${index}` }}
                                   onChange={handleFieldChange}
+                                  style={{ minWidth: column.minWidth }}
+                                  value={
+                                    column.id === 'amount'
+                                      ? line.amount
+                                      : line.description
+                                  }
                                 />
                               ) : (
                                 <TextField
+                                  type="text"
                                   inputProps={{ name: `${column.id}-${index}` }}
                                   disabled
                                   value={getOrderLineStatus(index)}
+                                  style={{ minWidth: column.minWidth }}
                                 />
                               )}
                             </TableCell>
