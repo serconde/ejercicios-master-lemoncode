@@ -1,4 +1,5 @@
 import { Validators, ValidationSchema, createFormValidation } from '@lemoncode/fonk';
+import { createFormikValidation } from '@lemoncode/fonk-formik';
 
 const validationSchema: ValidationSchema = {
   field: {
@@ -29,4 +30,4 @@ const validationSchema: ValidationSchema = {
   },
 };
 
-export const formValidation = createFormValidation(validationSchema);
+export const formValidation = createFormikValidation(validationSchema);

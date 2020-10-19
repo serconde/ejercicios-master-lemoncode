@@ -73,9 +73,10 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
 
   const onCloseCheckout = () => setProceedToCheckout(false);
 
-  const onPaymentDone = () => {
+  const doPayment = () => {
     setProceedToCheckout(false);
     setPaymentDone(true);
+    onEmptyShoppingCart();
   };
 
   return (
@@ -130,7 +131,7 @@ export const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({
         total={getTotal(!!pictures.length ? pictures.map((p) => p.price) : [0])}
         opened={proceedToCheckout}
         onClose={onCloseCheckout}
-        onPaymentDone={onPaymentDone}
+        doPayment={doPayment}
       />
       <Snackbar
         open={paymentDone}

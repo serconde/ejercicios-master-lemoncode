@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import Cards from 'react-credit-cards';
 import { CardsStyles, errorClass } from './payment-form.styles';
 import { TextField, Typography, withStyles } from '@material-ui/core';
 import { formatCurrency } from 'common/utils';
 import { formValidation } from './payment-form.validation';
 import { StyledButton } from 'common/components';
+import { Formik, Field, Form } from 'formik';
 
 const FormInput = withStyles({
   root: {
@@ -17,7 +18,7 @@ interface Props {
   locale: string;
   currency: string;
   total: number;
-  onPaymentDone: () => void;
+  doPayment: () => void;
 }
 
 interface PaymentFormState {
@@ -32,7 +33,7 @@ export const PaymentForm: React.FC<Props> = ({
   locale,
   currency,
   total,
-  onPaymentDone,
+  doPayment,
 }) => {
   const [paymentFormState, setPaymentFormState] = React.useState<
     PaymentFormState
@@ -44,38 +45,10 @@ export const PaymentForm: React.FC<Props> = ({
     number: '',
   });
 
-  const [formErrors, setFormErrors] = React.useState({
-    cvc: '',
-    expiry: '',
-    name: '',
-    number: '',
-  });
 
-  const handleInputFocus = (e) =>
-    setPaymentFormState({ ...paymentFormState, focus: e.target.name });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const onInputChange = (e) => {
+    const { name, value } = e.currentTarget;
     setPaymentFormState({ ...paymentFormState, [name]: value });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.persist();
-    formValidation.validateForm(e.target).then((results) => {
-      setFormErrors({
-        name: results.fieldErrors.name.message,
-        number: results.fieldErrors.number.message,
-        expiry: results.fieldErrors.name.message,
-        cvc: results.fieldErrors.cvc.message,
-      });
-
-      if (results.succeeded) {
-        onPaymentDone();
-      }
-      else {
-        e.preventDefault();
-      } 
-    });
   };
 
   return (
@@ -94,47 +67,80 @@ export const PaymentForm: React.FC<Props> = ({
         />
       </CardsStyles>
       <br></br>
-      <form id="paymentForm" onSubmit={handleFormSubmit} >
-        <FormInput
-          id="name"
-          name="name"
-          placeholder="Name"          
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <span id="name-error" className={errorClass}>{formErrors.name}</span>
-        <FormInput
-          id="number"
-          type="tel"
-          name="number"
-          placeholder="Card Number"
-          inputProps={{maxLength: 19}}
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <span id="number-error" className={errorClass}>{formErrors.number}</span>
-        <FormInput
-          id="expiry"
-          type="date"
-          name="expiry"
-          placeholder="Valid Thru"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <span id="expiry-error" className={errorClass}>{formErrors.expiry}</span>
-        <FormInput
-          id="cvc"
-          name="cvc"
-          type="tel"
-          inputProps={{maxLength: 3}}
-          placeholder="CVC"
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-        />
-        <span id="cvc-error" className={errorClass}>{formErrors.cvc}</span>
-        <br></br>
-        <StyledButton type="submit">Pay</StyledButton>
-      </form>
+      <Formik
+        enableReinitialize={true}
+        initialValues={{
+          name: '',
+          number: '',
+          expiry: undefined,
+          cvc: '',
+        }}
+        onSubmit={doPayment}
+        validate={formValidation.validateForm}        
+      >
+        {({ errors, touched, setFieldValue }) => {
+          const handleFieldChange= (e: ChangeEvent<HTMLInputElement>) => {
+            e.persist();
+            onInputChange(e);
+            setFieldValue(e.currentTarget.name, e.currentTarget.value);
+          }
+          return (<Form>
+            <FormInput
+              id="name"
+              inputProps={{name: "name"}}
+              type="text"
+              placeholder="Name"
+              onChange={handleFieldChange} 
+            />
+            {touched.name && errors.name && (
+              <span id="name-error" className={errorClass}>
+                {errors.name}
+              </span>
+            )}
+            <FormInput
+              id="number"
+              type="tel"
+              name="number" 
+              inputProps={{maxLength: 19}}
+              placeholder="Card Number"              
+              onChange={handleFieldChange} 
+            />
+            {touched.number && errors.number && (
+              <span id="name-error" className={errorClass}>
+                {errors.number}
+              </span>
+            )}
+            <FormInput
+              id="expiry"
+              type="date"
+              name="expiry" 
+              placeholder="Valid Thru"
+              onChange={handleFieldChange} 
+            />
+            {touched.expiry && errors.expiry && (
+              <span id="name-error" className={errorClass}>
+                {errors.expiry}
+              </span>
+            )}
+            <FormInput
+              id="cvc"
+              type="tel"
+              name="cvc" 
+              inputProps={{maxLength: 3}}
+              placeholder="CVC"
+              onChange={handleFieldChange} 
+            />
+            {touched.cvc && errors.cvc && (
+              <span id="name-error" className={errorClass}>
+                {errors.cvc}
+              </span>
+            )}
+            <br/><br/>
+            <StyledButton type="submit">Pay</StyledButton>
+          </Form>)
+        }
+      }
+      </Formik>
     </Typography>
   );
 };

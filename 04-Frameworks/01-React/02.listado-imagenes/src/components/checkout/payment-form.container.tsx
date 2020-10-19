@@ -34,7 +34,7 @@ interface Props {
   currency: string;
   total: number;
   onClose: () => void;
-  onPaymentDone: () => void;
+  doPayment: () => void;
 }
 
 export const PaymentFormContainer: React.FC<Props> = ({
@@ -43,7 +43,7 @@ export const PaymentFormContainer: React.FC<Props> = ({
   locale,
   currency,
   total,
-  onPaymentDone,
+  doPayment,
 }) => {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -64,7 +64,7 @@ export const PaymentFormContainer: React.FC<Props> = ({
           locale={locale}
           currency={currency}
           total={total}
-          onPaymentDone={onPaymentDone}
+          doPayment={doPayment}
         />
       </div>
     </Modal>
