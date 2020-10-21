@@ -1,21 +1,21 @@
-import React from 'react';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import { fireEvent } from '@testing-library/react';
-import { renderWithRouter } from 'common/test';
-import { Route } from 'react-router-dom';
-import { ItemComponent, ClassesProps } from './item.component';
-import { DashboardItemProps } from '../dashboard.vm';
+import React from "react";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import { fireEvent } from "@testing-library/react";
+import { renderWithRouter } from "common/test";
+import { Route } from "react-router-dom";
+import { ItemComponent, ClassesProps } from "./item.component";
+import { DashboardItemProps } from "../dashboard.vm";
 
-describe('common/dashboard/ItemComponent', () => {
-  it('should be render as expected passing required properties', () => {
+describe("common/dashboard/ItemComponent", () => {
+  it("should be render as expected passing required properties", () => {
     // Arrange
     const props = {
       item: {
         icon: PeopleAltIcon,
-        title: 'test name',
-        linkTo: '/test-link',
+        title: "test name",
+        linkTo: "/test-link"
       } as DashboardItemProps,
-      dataTestId: 'test-item',
+      dataTestId: "test-item"
     };
 
     // Act
@@ -33,22 +33,22 @@ describe('common/dashboard/ItemComponent', () => {
     expect(getByText(props.item.title)).toBeInTheDocument();
   });
 
-  it('should be render as expected passing required and optional properties', () => {
+  it("should be render as expected passing required and optional properties", () => {
     // Arrange
     const props = {
       item: {
         icon: PeopleAltIcon,
-        title: 'test name',
-        linkTo: '/test-link',
-        subtitle: 'test subtitle',
+        title: "test name",
+        linkTo: "/test-link",
+        subtitle: "test subtitle"
       } as DashboardItemProps,
       classes: {
-        root: 'test-root-class',
-        icon: 'test-icon-class',
-        title: 'test-name-class',
-        subtitle: 'test-subtitle-class',
+        root: "test-root-class",
+        icon: "test-icon-class",
+        title: "test-name-class",
+        subtitle: "test-subtitle-class"
       } as ClassesProps,
-      dataTestId: 'test-item',
+      dataTestId: "test-item"
     };
 
     // Act
@@ -70,22 +70,22 @@ describe('common/dashboard/ItemComponent', () => {
     expect(getByText(props.item.subtitle)).toHaveClass(props.classes.subtitle);
   });
 
-  it('should navigate to route when click on item component', () => {
+  it("should navigate to route when click on item component", () => {
     // Arrange
     const props = {
       item: {
         icon: PeopleAltIcon,
-        title: 'test name',
-        linkTo: '/test-link',
-        subtitle: 'test subtitle',
+        title: "test name",
+        linkTo: "/test-link",
+        subtitle: "test subtitle"
       } as DashboardItemProps,
       classes: {
-        root: 'test-root-class',
-        icon: 'test-icon-class',
-        title: 'test-name-class',
-        subtitle: 'test-subtitle-class',
+        root: "test-root-class",
+        icon: "test-icon-class",
+        title: "test-name-class",
+        subtitle: "test-subtitle-class"
       } as ClassesProps,
-      dataTestId: 'test-item',
+      dataTestId: "test-item"
     };
 
     // Act
@@ -104,6 +104,6 @@ describe('common/dashboard/ItemComponent', () => {
 
     // Assert
 
-    expect(getByText('Test route destination')).toBeInTheDocument();
+    expect(getByText("Test route destination")).toBeInTheDocument();
   });
 });

@@ -1,4 +1,4 @@
-import { generatePath } from 'react-router-dom';
+import { generatePath } from "react-router-dom";
 
 interface BaseRoutes {
   root: string;
@@ -11,16 +11,16 @@ interface BaseRoutes {
 }
 
 const baseRoutes: BaseRoutes = {
-  root: '/',
-  login: '/login',
-  submoduleList: '/submodule-list',
-  projects: '/projects',
-  editProject: '/projects/:id',
-  employees: '/employees',
-  editEmployee: '/employees/:id',
+  root: "/",
+  login: "/login",
+  submoduleList: "/submodule-list",
+  projects: "/projects",
+  editProject: "/projects/:id",
+  employees: "/employees",
+  editEmployee: "/employees/:id"
 };
 
-interface Routes extends Omit<BaseRoutes, 'editProject' | 'editEmployee'> {
+interface Routes extends Omit<BaseRoutes, "editProject" | "editEmployee"> {
   editProject: (id?: string) => string;
   editEmployee: (id?: string) => string;
 }
@@ -30,7 +30,5 @@ export const routes: Routes = {
   editProject: id =>
     id ? generatePath(baseRoutes.editProject, { id }) : baseRoutes.editProject,
   editEmployee: id =>
-    id
-      ? generatePath(baseRoutes.editEmployee, { id })
-      : baseRoutes.editEmployee,
+    id ? generatePath(baseRoutes.editEmployee, { id }) : baseRoutes.editEmployee
 };

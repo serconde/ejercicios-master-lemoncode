@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const useMenu = (): {
   isOpen: boolean;
@@ -23,6 +23,6 @@ export const useMenu = (): {
     isOpen,
     menuElement,
     onOpenMenu,
-    onCloseMenu,
+    onCloseMenu
   };
 };

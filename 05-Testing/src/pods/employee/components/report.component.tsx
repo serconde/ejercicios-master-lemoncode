@@ -1,12 +1,12 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
-import { SelectComponent } from 'common/components';
-import { monthList } from 'common/constants';
-import * as classes from './report.styles';
-import { CommandFooterComponent } from 'common-app/command-footer';
-import { cx } from 'emotion';
-import { formValidation } from './report.validations';
-import { Report } from '../employee.vm';
+import React from "react";
+import { Formik, Form } from "formik";
+import { SelectComponent } from "common/components";
+import { monthList } from "common/constants";
+import * as classes from "./report.styles";
+import { CommandFooterComponent } from "common-app/command-footer";
+import { cx } from "emotion";
+import { formValidation } from "./report.validations";
+import { Report } from "../employee.vm";
 
 interface Props {
   report: Report;
@@ -19,7 +19,7 @@ export const ReportComponent: React.FunctionComponent<Props> = ({
   report,
   className,
   onCancel,
-  onGenerateExcel,
+  onGenerateExcel
 }) => {
   return (
     <Formik
@@ -41,16 +41,16 @@ export const ReportComponent: React.FunctionComponent<Props> = ({
             label="Año"
             items={[
               {
-                id: '2020',
-                name: '2020',
-              },
+                id: "2020",
+                name: "2020"
+              }
             ]}
             className={classes.year}
           />
           <CommandFooterComponent
             onCancel={onCancel}
             className={classes.commands}
-            labels={{ saveButton: 'Generar', cancelButton: 'Cancelar' }}
+            labels={{ saveButton: "Generar", cancelButton: "Cancelar" }}
           />
         </Form>
       )}

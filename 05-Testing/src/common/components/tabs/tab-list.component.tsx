@@ -1,7 +1,7 @@
-import React from 'react';
-import Tabs, { TabsProps } from '@material-ui/core/Tabs';
+import React from "react";
+import Tabs, { TabsProps } from "@material-ui/core/Tabs";
 
-interface Props extends Omit<TabsProps, 'onChange'> {
+interface Props extends Omit<TabsProps, "onChange"> {
   value: number;
   onChange: (value: number) => void;
 }

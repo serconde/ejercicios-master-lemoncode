@@ -1,6 +1,6 @@
-import React from 'react';
-import { ContainerComponent, LoginFormComponent } from './components';
-import { Login } from './login.vm';
+import React from "react";
+import { ContainerComponent, LoginFormComponent } from "./components";
+import { Login } from "./login.vm";
 
 interface Props {
   onLogin: (login: Login) => void;

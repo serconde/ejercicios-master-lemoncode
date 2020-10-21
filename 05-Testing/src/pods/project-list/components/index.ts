@@ -1,1 +1,1 @@
-export * from './project-row.component';
+export * from "./project-row.component";

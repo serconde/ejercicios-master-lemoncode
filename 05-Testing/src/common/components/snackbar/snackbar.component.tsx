@@ -1,10 +1,10 @@
-import React from 'react';
-import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import { SnackbarContext } from './snackbar.context';
-import * as classes from './snackbar.styles';
+import React from "react";
+import Snackbar, { SnackbarOrigin } from "@material-ui/core/Snackbar";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import { SnackbarContext } from "./snackbar.context";
+import * as classes from "./snackbar.styles";
 
 interface Props {
   autoHideDuration?: number;
@@ -28,7 +28,7 @@ export const SnackbarComponent: React.FunctionComponent<Props> = props => {
         action={[
           <IconButton key="close" color="inherit" onClick={onClose}>
             <CloseIcon />
-          </IconButton>,
+          </IconButton>
         ]}
       />
     </Snackbar>
@@ -37,8 +37,8 @@ export const SnackbarComponent: React.FunctionComponent<Props> = props => {
 
 SnackbarComponent.defaultProps = {
   position: {
-    horizontal: 'right',
-    vertical: 'top',
+    horizontal: "right",
+    vertical: "top"
   },
-  autoHideDuration: 3000,
+  autoHideDuration: 3000
 };

@@ -14,10 +14,10 @@ export interface EmployeeSummary {
 }
 
 export const createEmptyProject = (): Project => ({
-  id: '',
-  name: '',
-  externalId: '',
-  comments: '',
+  id: "",
+  name: "",
+  externalId: "",
+  comments: "",
   isActive: false,
-  employees: [],
+  employees: []
 });

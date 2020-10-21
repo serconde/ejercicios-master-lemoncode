@@ -1,14 +1,14 @@
-import React from 'react';
-import { useField } from 'formik';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import * as classes from './checkbox.styles';
+import React from "react";
+import { useField } from "formik";
+import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import * as classes from "./checkbox.styles";
 
 interface Props extends CheckboxProps {
   label?: string;
-  labelPlacement?: 'end' | 'start' | 'top' | 'bottom';
+  labelPlacement?: "end" | "start" | "top" | "bottom";
   error?: boolean;
   helperText?: string;
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import { SideListComponent } from './side-list.component';
+import React from "react";
+import Drawer from "@material-ui/core/Drawer";
+import { SideListComponent } from "./side-list.component";
 
 interface Props {
   open: boolean;

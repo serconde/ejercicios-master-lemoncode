@@ -1,5 +1,5 @@
-import { css } from 'emotion';
-import { theme } from 'core/theme';
+import { css } from "emotion";
+import { theme } from "core/theme";
 
 export const root = css`
   display: flex;

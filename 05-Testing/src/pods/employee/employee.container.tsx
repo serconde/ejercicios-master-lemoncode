@@ -1,17 +1,17 @@
-import React from 'react';
-import { EmployeeComponent } from './employee.component';
+import React from "react";
+import { EmployeeComponent } from "./employee.component";
 import {
   Employee,
   Report,
   createEmptyEmployee,
-  createEmptyReport,
-} from './employee.vm';
-import { useSnackbarContext } from 'common/components';
-import { trackPromise } from 'react-promise-tracker';
-import { getEmployeeById } from './api';
-import { mapEmployeeFromApiToVm } from './employee.mappers';
-import { useParams } from 'react-router-dom';
-import { isEditModeHelper } from 'common/helpers';
+  createEmptyReport
+} from "./employee.vm";
+import { useSnackbarContext } from "common/components";
+import { trackPromise } from "react-promise-tracker";
+import { getEmployeeById } from "./api";
+import { mapEmployeeFromApiToVm } from "./employee.mappers";
+import { useParams } from "react-router-dom";
+import { isEditModeHelper } from "common/helpers";
 
 export const EmployeeContainer: React.FunctionComponent = () => {
   const { id } = useParams();
@@ -29,12 +29,12 @@ export const EmployeeContainer: React.FunctionComponent = () => {
       setEmployee(viewModelEmployee);
     } catch (error) {
       error &&
-        showMessage('Ha ocurrido un error al cargar el empleado', 'error');
+        showMessage("Ha ocurrido un error al cargar el empleado", "error");
     }
   };
 
   const handleSave = (employee: Employee) => {
-    console.log('Guardado');
+    console.log("Guardado");
   };
 
   const handleCancel = () => {
@@ -43,7 +43,7 @@ export const EmployeeContainer: React.FunctionComponent = () => {
 
   const handleGenerateExcel = (report: Report) => {
     // Pending to create real implementation
-    console.log('Excel creado');
+    console.log("Excel creado");
   };
 
   React.useEffect(() => {

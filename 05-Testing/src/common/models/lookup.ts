@@ -4,6 +4,6 @@ export interface Lookup {
 }
 
 export const createEmptyLookup = (): Lookup => ({
-  id: '',
-  name: '',
+  id: "",
+  name: ""
 });

@@ -1,17 +1,17 @@
-import React from 'react';
-import { cx } from 'emotion';
-import { TableProps, HeaderGroup, Row } from 'react-table';
-import Paper from '@material-ui/core/Paper';
-import TableContainer from '@material-ui/core/TableContainer';
-import Table from '@material-ui/core/Table';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { SearchBarComponent } from '../search-bar';
-import { PaginationComponent } from '../pagination';
-import { ConfirmationDialogComponent } from '../confirmation-dialog';
-import { HeaderComponent, BodyComponent } from './components';
-import { RowRendererProps, LabelProps } from './table.vm';
-import * as classes from './table.styles';
+import React from "react";
+import { cx } from "emotion";
+import { TableProps, HeaderGroup, Row } from "react-table";
+import Paper from "@material-ui/core/Paper";
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { SearchBarComponent } from "../search-bar";
+import { PaginationComponent } from "../pagination";
+import { ConfirmationDialogComponent } from "../confirmation-dialog";
+import { HeaderComponent, BodyComponent } from "./components";
+import { RowRendererProps, LabelProps } from "./table.vm";
+import * as classes from "./table.styles";
 
 interface Props<T extends object = {}> {
   tableProps: TableProps;
@@ -55,7 +55,7 @@ export const TableComponent: React.FunctionComponent<Props> = props => {
     isOpenConfirmation,
     onCloseConfirmation,
     labels,
-    className,
+    className
   } = props;
 
   return (
@@ -100,7 +100,7 @@ export const TableComponent: React.FunctionComponent<Props> = props => {
             title={labels.deleteTitle}
             labels={{
               closeButton: labels.closeButton,
-              acceptButton: labels.acceptButton,
+              acceptButton: labels.acceptButton
             }}
           >
             <Typography variant="body1">

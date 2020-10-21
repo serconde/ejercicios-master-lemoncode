@@ -4,6 +4,6 @@ export const isValidLogin = (
 ): Promise<boolean> =>
   new Promise(resolve => {
     setTimeout(() => {
-      resolve(user === 'admin' && password === 'test');
+      resolve(user === "admin" && password === "test");
     }, 1000);
   });

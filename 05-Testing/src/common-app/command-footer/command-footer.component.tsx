@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { cx } from 'emotion';
-import Button from '@material-ui/core/Button';
-import * as classes from './command-footer.style';
+import * as React from "react";
+import { cx } from "emotion";
+import Button from "@material-ui/core/Button";
+import * as classes from "./command-footer.style";
 
 interface LabelProps {
   cancelButton?: string;
@@ -18,9 +18,9 @@ interface Props {
 export const CommandFooterComponent: React.FunctionComponent<Props> = props => {
   const { onCancel, onSave, className } = props;
   const labels: LabelProps = {
-    cancelButton: 'Cancelar',
-    saveButton: 'Guardar',
-    ...props.labels,
+    cancelButton: "Cancelar",
+    saveButton: "Guardar",
+    ...props.labels
   };
 
   return (

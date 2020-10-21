@@ -1,13 +1,13 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
-import { TextFieldComponent, CheckboxComponent } from 'common/components';
-import produce from 'immer';
-import { CommandFooterComponent } from '../../../common-app/command-footer';
-import * as classes from './data.styles';
-import { cx } from 'emotion';
-import { Employee } from '../employee.vm';
-import { formValidation, validationSchema } from './data.validations';
-import { Validators } from '@lemoncode/fonk';
+import React from "react";
+import { Formik, Form } from "formik";
+import { TextFieldComponent, CheckboxComponent } from "common/components";
+import produce from "immer";
+import { CommandFooterComponent } from "../../../common-app/command-footer";
+import * as classes from "./data.styles";
+import { cx } from "emotion";
+import { Employee } from "../employee.vm";
+import { formValidation, validationSchema } from "./data.validations";
+import { Validators } from "@lemoncode/fonk";
 
 interface Props {
   employee: Employee;
@@ -22,7 +22,7 @@ export const DataComponent: React.FunctionComponent<Props> = ({
   className,
   onSave,
   isEditMode,
-  onCancel,
+  onCancel
 }) => {
   React.useEffect(() => {
     const newValidationSchema = produce(validationSchema, darft => {
@@ -45,7 +45,7 @@ export const DataComponent: React.FunctionComponent<Props> = ({
             name="id"
             className={classes.id}
             InputProps={{
-              readOnly: true,
+              readOnly: true
             }}
           />
           {!isEditMode && (

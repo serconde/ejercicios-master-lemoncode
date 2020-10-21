@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   TableContainer,
   RowRendererProps,
-  useSearchBar,
-} from 'common/components';
-import { Employee } from './employee-list.vm';
-import { EmployeeRowComponent } from './components';
+  useSearchBar
+} from "common/components";
+import { Employee } from "./employee-list.vm";
+import { EmployeeRowComponent } from "./components";
 
 interface Props {
   employeeList: Employee[];
@@ -18,10 +18,10 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
   employeeList,
   onCreate,
   onEdit,
-  onDelete,
+  onDelete
 }) => {
   const { filteredList, onSearch, search } = useSearchBar(employeeList, [
-    'name',
+    "name"
   ]);
 
   const contentRender = ({ itemName }) => {
@@ -34,7 +34,7 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
 
   return (
     <TableContainer
-      columns={['Activo', 'Id', 'Nombre', 'Email', 'Fecha último incurrido']}
+      columns={["Activo", "Id", "Nombre", "Email", "Fecha último incurrido"]}
       rows={filteredList}
       rowRenderer={(rowProps: RowRendererProps<Employee>) => (
         <EmployeeRowComponent {...rowProps} />
@@ -43,12 +43,12 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
       onEdit={onEdit}
       onDelete={onDelete}
       labels={{
-        searchPlaceholder: 'Buscar empleado',
-        createButton: 'Nuevo empleado',
-        deleteTitle: 'Eliminar Empleado',
+        searchPlaceholder: "Buscar empleado",
+        createButton: "Nuevo empleado",
+        deleteTitle: "Eliminar Empleado",
         deleteContent: props => contentRender(props),
-        closeButton: 'Cancelar',
-        acceptButton: 'Aceptar',
+        closeButton: "Cancelar",
+        acceptButton: "Aceptar"
       }}
       enableSearch={true}
       search={search}

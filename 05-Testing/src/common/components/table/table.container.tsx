@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
   useTable,
   usePagination,
   TableInstance,
-  UsePaginationInstanceProps,
-} from 'react-table';
-import { useConfirmationDialog } from '../confirmation-dialog';
+  UsePaginationInstanceProps
+} from "react-table";
+import { useConfirmationDialog } from "../confirmation-dialog";
 import {
   RowRendererProps,
   LabelProps,
-  createEmptyLabelProps,
-} from './table.vm';
-import { TableComponent } from './table.component';
-import { mapColumnListFromStringToColumn } from './table.mappers';
+  createEmptyLabelProps
+} from "./table.vm";
+import { TableComponent } from "./table.component";
+import { mapColumnListFromStringToColumn } from "./table.mappers";
 
 type TableProps = TableInstance & UsePaginationInstanceProps<{}>;
 
@@ -51,12 +51,12 @@ export const TableContainer: React.FunctionComponent<Props> = props => {
     page,
     gotoPage,
     pageOptions,
-    state,
+    state
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageSize: props.pageSize } as any,
+      initialState: { pageSize: props.pageSize } as any
     },
     usePagination
   ) as TableProps;
@@ -67,7 +67,7 @@ export const TableContainer: React.FunctionComponent<Props> = props => {
     itemToDelete,
     onOpenDialog,
     onClose,
-    onAccept,
+    onAccept
   } = useConfirmationDialog();
 
   const handleDelete = () => {
@@ -88,7 +88,7 @@ export const TableContainer: React.FunctionComponent<Props> = props => {
         props.rowRenderer({
           ...rowProps,
           onEdit: props.onEdit,
-          onDelete: Boolean(props.onDelete) ? onOpenDialog : undefined,
+          onDelete: Boolean(props.onDelete) ? onOpenDialog : undefined
         })
       }
       labels={labels}
@@ -112,5 +112,5 @@ export const TableContainer: React.FunctionComponent<Props> = props => {
 
 TableContainer.defaultProps = {
   enablePagination: false,
-  labels: createEmptyLabelProps(),
+  labels: createEmptyLabelProps()
 };

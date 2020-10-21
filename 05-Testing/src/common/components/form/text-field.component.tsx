@@ -1,6 +1,6 @@
-import React from 'react';
-import { useField } from 'formik';
-import MuiTextField, { TextFieldProps } from '@material-ui/core/TextField';
+import React from "react";
+import { useField } from "formik";
+import MuiTextField, { TextFieldProps } from "@material-ui/core/TextField";
 
 export const TextFieldComponent: React.FunctionComponent<TextFieldProps> = props => {
   const [field, meta] = useField(props.name);
@@ -15,7 +15,7 @@ export const TextFieldComponent: React.FunctionComponent<TextFieldProps> = props
       onBlur={textFieldProps.onBlur}
       value={textFieldProps.value}
       error={hasError}
-      helperText={hasError ? meta.error : ''}
+      helperText={hasError ? meta.error : ""}
       fullWidth={true}
       margin="normal"
     />

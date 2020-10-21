@@ -1,9 +1,9 @@
-import { mapEmployeeFromApiToVm } from './employee.mappers';
-import * as apiModel from './api/employee.api-model';
-import * as viewModel from './employee.vm';
+import { mapEmployeeFromApiToVm } from "./employee.mappers";
+import * as apiModel from "./api/employee.api-model";
+import * as viewModel from "./employee.vm";
 
-describe('./pods/employee/employee.mappers', () => {
-  it('should return empty employee when feeding null value', () => {
+describe("./pods/employee/employee.mappers", () => {
+  it("should return empty employee when feeding null value", () => {
     // Arrange
     const employee = null;
 
@@ -14,7 +14,7 @@ describe('./pods/employee/employee.mappers', () => {
     expect(result).toEqual(viewModel.createEmptyEmployee());
   });
 
-  it('should return empty employee when feeding undefined value', () => {
+  it("should return empty employee when feeding undefined value", () => {
     // Arrange
     const employee = undefined;
 
@@ -25,24 +25,24 @@ describe('./pods/employee/employee.mappers', () => {
     expect(result).toEqual(viewModel.createEmptyEmployee());
   });
 
-  it('should return expected result but feeding null project list', () => {
+  it("should return expected result but feeding null project list", () => {
     // Arrange
     const employee: apiModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
-      projects: null,
+      temporalPassword: "test password",
+      projects: null
     };
 
     const expectedResult: viewModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
-      projects: [],
+      temporalPassword: "test password",
+      projects: []
     };
 
     // Act
@@ -52,24 +52,24 @@ describe('./pods/employee/employee.mappers', () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it('should return expected result but feeding undefined project list', () => {
+  it("should return expected result but feeding undefined project list", () => {
     // Arrange
     const employee: apiModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
-      projects: undefined,
+      temporalPassword: "test password",
+      projects: undefined
     };
 
     const expectedResult: viewModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
-      projects: [],
+      temporalPassword: "test password",
+      projects: []
     };
 
     // Act
@@ -79,36 +79,36 @@ describe('./pods/employee/employee.mappers', () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it('should return expected result feeding correct values', () => {
+  it("should return expected result feeding correct values", () => {
     // Arrange
     const employee: apiModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
+      temporalPassword: "test password",
       projects: [
         {
-          id: 'test id',
-          projectName: 'test employee name',
-          isAssigned: true,
-        },
-      ],
+          id: "test id",
+          projectName: "test employee name",
+          isAssigned: true
+        }
+      ]
     };
 
     const expectedResult: viewModel.Employee = {
-      id: 'test id',
-      name: 'test name',
-      email: 'test@email.com',
+      id: "test id",
+      name: "test name",
+      email: "test@email.com",
       isActive: true,
-      temporalPassword: 'test password',
+      temporalPassword: "test password",
       projects: [
         {
-          id: 'test id',
-          projectName: 'test employee name',
-          isAssigned: true,
-        },
-      ],
+          id: "test id",
+          projectName: "test employee name",
+          isAssigned: true
+        }
+      ]
     };
 
     // Act

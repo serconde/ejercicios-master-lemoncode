@@ -1,5 +1,5 @@
-import { css } from 'emotion';
-import { theme } from 'core/theme';
+import { css } from "emotion";
+import { theme } from "core/theme";
 
 interface Props {
   isEditMode: boolean;
@@ -15,13 +15,13 @@ export const form = (props: Props) => css`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
-    'id'
-    ${props.isEditMode ? '' : `'temporalPassword'`}
-    'employeeName'
-    'email'
-    'isActive'
-    'commands'
-    'commands';
+    "id"
+    ${props.isEditMode ? "" : `'temporalPassword'`}
+    "employeeName"
+    "email"
+    "isActive"
+    "commands"
+    "commands";
   grid-row-gap: ${theme.spacing(2)}px;
   grid-column-gap: ${theme.spacing(3)}px;
 
@@ -29,9 +29,9 @@ export const form = (props: Props) => css`
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       ${getDynamicAreaNames(props)}
-      'email .'
-      'isActive .'
-      'commands commands';
+      "email ."
+      "isActive ."
+      "commands commands";
   }
 `;
 

@@ -3,5 +3,5 @@ export interface UserSession {
 }
 
 export const createEmptyUserSession = (): UserSession => ({
-  userName: '',
+  userName: ""
 });

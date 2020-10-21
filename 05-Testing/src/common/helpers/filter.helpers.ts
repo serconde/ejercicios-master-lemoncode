@@ -1,12 +1,12 @@
-import get from 'lodash.get';
-import { flattenObject } from './object.helpers';
+import get from "lodash.get";
+import { flattenObject } from "./object.helpers";
 
 const getStringLowerCase = (value: string): string =>
-  value ? value.toLowerCase().trim() : '';
+  value ? value.toLowerCase().trim() : "";
 
 const removeAccents = (value: string) =>
   Boolean(value.normalize)
-    ? value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    ? value.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     : value;
 
 const formatValue = value => {
@@ -67,7 +67,7 @@ export const filterByText = <Entity, Key extends keyof Entity>(
     (fields as Key[]).reduce(
       (newFilter, field) => ({
         ...newFilter,
-        [field]: text,
+        [field]: text
       }),
       {}
     );

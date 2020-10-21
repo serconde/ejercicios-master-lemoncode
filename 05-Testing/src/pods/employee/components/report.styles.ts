@@ -1,15 +1,15 @@
-import { css } from 'emotion';
-import { theme } from 'core/theme';
+import { css } from "emotion";
+import { theme } from "core/theme";
 
 export const form = css`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: 'month' 'year' 'commands' 'commands';
+  grid-template-areas: "month" "year" "commands" "commands";
   grid-column-gap: ${theme.spacing(2)}px;
 
   @media (min-width: ${theme.breakpoints.values.md}px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'month year' 'commands commands';
+    grid-template-areas: "month year" "commands commands";
   }
 `;
 

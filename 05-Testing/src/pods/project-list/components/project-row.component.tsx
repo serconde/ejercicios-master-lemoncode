@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   RowRendererProps,
   RowComponent,
-  CellComponent,
-} from 'common/components';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { Project } from '../project-list.vm';
+  CellComponent
+} from "common/components";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Project } from "../project-list.vm";
 
 type Props = RowRendererProps<Project>;
 
 export const ProjectRowComponent: React.FunctionComponent<Props> = ({
   row,
   onEdit,
-  onDelete,
+  onDelete
 }) => {
   return (
     <RowComponent>

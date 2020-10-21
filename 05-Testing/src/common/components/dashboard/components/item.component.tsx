@@ -1,9 +1,9 @@
-import React from 'react';
-import { cx } from 'emotion';
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import { DashboardItemProps } from '../dashboard.vm';
-import * as innerClasses from './item.styles';
+import React from "react";
+import { cx } from "emotion";
+import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
+import { DashboardItemProps } from "../dashboard.vm";
+import * as innerClasses from "./item.styles";
 
 export interface ClassesProps {
   root?: string;
@@ -22,7 +22,7 @@ export const ItemComponent: React.StatelessComponent<Props> = props => {
   const {
     item: { icon: Icon, title, linkTo, subtitle },
     classes,
-    dataTestId,
+    dataTestId
   } = props;
   return (
     <Link
@@ -49,9 +49,9 @@ export const ItemComponent: React.StatelessComponent<Props> = props => {
 
 ItemComponent.defaultProps = {
   classes: {
-    root: '',
-    icon: '',
-    title: '',
-    subtitle: '',
-  },
+    root: "",
+    icon: "",
+    title: "",
+    subtitle: ""
+  }
 };

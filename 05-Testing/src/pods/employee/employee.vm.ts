@@ -19,15 +19,15 @@ export interface Report {
 }
 
 export const createEmptyEmployee = (): Employee => ({
-  id: '',
-  name: '',
-  email: '',
+  id: "",
+  name: "",
+  email: "",
   isActive: false,
-  temporalPassword: '',
-  projects: [],
+  temporalPassword: "",
+  projects: []
 });
 
 export const createEmptyReport = (): Report => ({
-  month: '',
-  year: '',
+  month: "",
+  year: ""
 });

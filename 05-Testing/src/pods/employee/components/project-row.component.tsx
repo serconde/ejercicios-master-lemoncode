@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
   RowRendererProps,
   RowComponent,
-  CellComponent,
-} from 'common/components';
-import Checkbox from '@material-ui/core/Checkbox';
-import { ProjectSummary } from '../employee.vm';
+  CellComponent
+} from "common/components";
+import Checkbox from "@material-ui/core/Checkbox";
+import { ProjectSummary } from "../employee.vm";
 
 type Props = RowRendererProps<ProjectSummary>;
 
 export const EmployeeRowComponent: React.FunctionComponent<Props> = ({
-  row,
+  row
 }) => {
   return (
     <RowComponent>

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Tab, { TabProps } from '@material-ui/core/Tab';
+import * as React from "react";
+import Tab, { TabProps } from "@material-ui/core/Tab";
 
 type Props = TabProps;
 

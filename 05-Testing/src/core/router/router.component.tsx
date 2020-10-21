@@ -1,15 +1,15 @@
-import React from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import { AuthRouterComponent } from 'common-app/auth';
-import { routes } from './routes';
+import React from "react";
+import { HashRouter, Switch, Route } from "react-router-dom";
+import { AuthRouterComponent } from "common-app/auth";
+import { routes } from "./routes";
 import {
   LoginScene,
   SubmoduleListScene,
   ProjectListScene,
   EmployeeListScene,
   ProjectScene,
-  EmployeeScene,
-} from 'scenes';
+  EmployeeScene
+} from "scenes";
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (

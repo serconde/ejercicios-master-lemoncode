@@ -1,15 +1,15 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
-import { StylesProvider } from '@material-ui/styles';
-import { setValidatorsMessagesToSpanish } from 'core/i18n';
-import { RouterComponent } from 'core/router';
-import { ThemeProviderComponent } from 'core/theme';
-import { AuthProvider } from 'common-app/auth';
+import React from "react";
+import { hot } from "react-hot-loader/root";
+import { StylesProvider } from "@material-ui/styles";
+import { setValidatorsMessagesToSpanish } from "core/i18n";
+import { RouterComponent } from "core/router";
+import { ThemeProviderComponent } from "core/theme";
+import { AuthProvider } from "common-app/auth";
 import {
   SnackbarComponent,
   SnackbarProvider,
-  SpinnerComponent,
-} from 'common/components';
+  SpinnerComponent
+} from "common/components";
 
 setValidatorsMessagesToSpanish();
 

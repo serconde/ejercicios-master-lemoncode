@@ -1,5 +1,5 @@
-import React from 'react';
-import { SnackbarOptions } from './snackbar.vm';
+import React from "react";
+import { SnackbarOptions } from "./snackbar.vm";
 
 interface Context {
   open: boolean;
@@ -15,12 +15,12 @@ export const SnackbarProvider: React.FunctionComponent = props => {
   const { children } = props;
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState<SnackbarOptions>({
-    message: '',
-    variant: 'success',
+    message: "",
+    variant: "success"
   });
 
   const handleClose = (_, reason?: string) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpen(false);
@@ -33,7 +33,7 @@ export const SnackbarProvider: React.FunctionComponent = props => {
         setOpen,
         onClose: handleClose,
         options,
-        setOptions,
+        setOptions
       }}
     >
       {children}

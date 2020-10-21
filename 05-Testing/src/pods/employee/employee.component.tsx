@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   TabComponent,
   TabListComponent,
-  TabPanelComponent,
-} from 'common/components';
-import AppBar from '@material-ui/core/AppBar';
-import { DataComponent, ProjectComponent, ReportComponent } from './components';
-import { Employee, Report } from './employee.vm';
-import * as classes from './employee.styles';
+  TabPanelComponent
+} from "common/components";
+import AppBar from "@material-ui/core/AppBar";
+import { DataComponent, ProjectComponent, ReportComponent } from "./components";
+import { Employee, Report } from "./employee.vm";
+import * as classes from "./employee.styles";
 
 interface Props {
   employee: Employee;
@@ -24,7 +24,7 @@ export const EmployeeComponent: React.FunctionComponent<Props> = ({
   report,
   onSave,
   onCancel,
-  onGenerateExcel,
+  onGenerateExcel
 }) => {
   const [tab, setTab] = React.useState(0);
   return (

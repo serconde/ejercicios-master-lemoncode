@@ -1,1 +1,1 @@
-export * from './command-footer.component';
+export * from "./command-footer.component";

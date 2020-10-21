@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   TableContainer,
   RowRendererProps,
-  useSearchBar,
-} from 'common/components';
-import { Project } from './project-list.vm';
-import { ProjectRowComponent } from './components';
+  useSearchBar
+} from "common/components";
+import { Project } from "./project-list.vm";
+import { ProjectRowComponent } from "./components";
 
 interface Props {
   projectList: Project[];
@@ -18,10 +18,10 @@ export const ProjectListComponent: React.FunctionComponent<Props> = ({
   projectList,
   onCreate,
   onEdit,
-  onDelete,
+  onDelete
 }) => {
   const { filteredList, onSearch, search } = useSearchBar(projectList, [
-    'name',
+    "name"
   ]);
 
   const contentRender = ({ itemName }) => {
@@ -35,11 +35,11 @@ export const ProjectListComponent: React.FunctionComponent<Props> = ({
   return (
     <TableContainer
       columns={[
-        'Activo',
-        'Código',
-        'Proyecto',
-        'Fecha Ultimo incurrido',
-        'Fecha creación',
+        "Activo",
+        "Código",
+        "Proyecto",
+        "Fecha Ultimo incurrido",
+        "Fecha creación"
       ]}
       rows={filteredList}
       rowRenderer={(rowProps: RowRendererProps<Project>) => (
@@ -49,12 +49,12 @@ export const ProjectListComponent: React.FunctionComponent<Props> = ({
       onEdit={onEdit}
       onDelete={onDelete}
       labels={{
-        searchPlaceholder: 'Buscar proyecto',
-        createButton: 'Nuevo proyecto',
-        deleteTitle: 'Eliminar Proyecto',
+        searchPlaceholder: "Buscar proyecto",
+        createButton: "Nuevo proyecto",
+        deleteTitle: "Eliminar Proyecto",
         deleteContent: props => contentRender(props),
-        closeButton: 'Cancelar',
-        acceptButton: 'Aceptar',
+        closeButton: "Cancelar",
+        acceptButton: "Aceptar"
       }}
       enableSearch={true}
       search={search}

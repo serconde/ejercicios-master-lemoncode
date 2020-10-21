@@ -1,3 +1,3 @@
-export * from './keys';
-export * from './en';
-export * from './es';
+export * from "./keys";
+export * from "./en";
+export * from "./es";

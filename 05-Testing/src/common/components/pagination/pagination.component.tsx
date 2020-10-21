@@ -1,5 +1,5 @@
-import React from 'react';
-import Pagination from '@material-ui/lab/Pagination';
+import React from "react";
+import Pagination from "@material-ui/lab/Pagination";
 
 interface Props {
   pageIndex: number;

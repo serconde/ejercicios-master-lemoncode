@@ -1,5 +1,5 @@
-import React from 'react';
-import { Lookup } from 'common/models';
+import React from "react";
+import { Lookup } from "common/models";
 
 export interface RowRendererProps<T = {}> {
   row: T;
@@ -17,10 +17,10 @@ export interface LabelProps {
 }
 
 export const createEmptyLabelProps = (): LabelProps => ({
-  searchPlaceholder: '',
-  createButton: '',
-  deleteTitle: '',
+  searchPlaceholder: "",
+  createButton: "",
+  deleteTitle: "",
   deleteContent: undefined,
-  closeButton: '',
-  acceptButton: '',
+  closeButton: "",
+  acceptButton: ""
 });

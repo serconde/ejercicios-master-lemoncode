@@ -1,21 +1,21 @@
-import * as React from 'react';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import { Route } from 'react-router-dom';
-import { renderWithRouter } from 'common/test';
-import { DashboardComponent } from './dashboard.component';
-import { DashboardItemProps } from './dashboard.vm';
+import * as React from "react";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import { Route } from "react-router-dom";
+import { renderWithRouter } from "common/test";
+import { DashboardComponent } from "./dashboard.component";
+import { DashboardItemProps } from "./dashboard.vm";
 
-describe('common/DashboardComponent', () => {
-  it('should be render as expected passing required properties', () => {
+describe("common/DashboardComponent", () => {
+  it("should be render as expected passing required properties", () => {
     // Arrange
     const props = {
       items: [
         {
-          title: 'test name',
+          title: "test name",
           icon: PeopleAltIcon,
-          linkTo: 'linkTo',
-        },
-      ] as DashboardItemProps[],
+          linkTo: "linkTo"
+        }
+      ] as DashboardItemProps[]
     };
 
     // Act
@@ -33,22 +33,22 @@ describe('common/DashboardComponent', () => {
     expect(getByText(props.items[0].title)).toBeInTheDocument();
   });
 
-  it('should be render as expected passing required and optional properties', () => {
+  it("should be render as expected passing required and optional properties", () => {
     // Arrange
     const props = {
       items: [
         {
-          title: 'test name',
+          title: "test name",
           icon: PeopleAltIcon,
-          linkTo: 'linkTo',
-        },
+          linkTo: "linkTo"
+        }
       ] as DashboardItemProps[],
       classes: {
-        root: 'test-root-class',
-        items: 'test-items-class',
-        item: 'test-item-class',
+        root: "test-root-class",
+        items: "test-items-class",
+        item: "test-item-class"
       },
-      dataTestId: 'dashboard-id',
+      dataTestId: "dashboard-id"
     };
 
     // Act
@@ -69,36 +69,36 @@ describe('common/DashboardComponent', () => {
     expect(element.firstChild).toHaveClass(props.classes.items);
   });
 
-  it('should be render as expected passing three items', () => {
+  it("should be render as expected passing three items", () => {
     // Arrange
     const props = {
       items: [
         {
-          title: 'test name 1',
+          title: "test name 1",
           icon: PeopleAltIcon,
-          linkTo: 'linkTo 1',
+          linkTo: "linkTo 1"
         },
         {
-          title: 'test name 2',
+          title: "test name 2",
           icon: PeopleAltIcon,
-          linkTo: 'linkTo 2',
+          linkTo: "linkTo 2"
         },
         {
-          title: 'test name 3',
+          title: "test name 3",
           icon: PeopleAltIcon,
-          linkTo: 'linkTo 3',
-        },
+          linkTo: "linkTo 3"
+        }
       ] as DashboardItemProps[],
       classes: {
-        dashboard: 'test-dashboard-class',
-        items: 'test-items-class',
+        dashboard: "test-dashboard-class",
+        items: "test-items-class",
         item: {
-          item: 'test-item-class',
-          icon: 'test-icon-class',
-          name: 'test-name-class',
-        },
+          item: "test-item-class",
+          icon: "test-icon-class",
+          name: "test-name-class"
+        }
       },
-      dataTestId: 'dashboard-id',
+      dataTestId: "dashboard-id"
     };
 
     // Act

@@ -1,8 +1,8 @@
-import React from 'react';
-import { cx } from 'emotion';
-import { ItemComponent, ClassesProps } from './components';
-import { DashboardItemProps } from './dashboard.vm';
-import * as innerClasses from './dashboard.styles';
+import React from "react";
+import { cx } from "emotion";
+import { ItemComponent, ClassesProps } from "./components";
+import { DashboardItemProps } from "./dashboard.vm";
+import * as innerClasses from "./dashboard.styles";
 
 interface ClassNameProps {
   root?: string;
@@ -31,7 +31,7 @@ export const DashboardComponent: React.StatelessComponent<Props> = props => {
                 key={item.title}
                 classes={{
                   ...classes.item,
-                  root: cx(innerClasses.item, classes.item.root),
+                  root: cx(innerClasses.item, classes.item.root)
                 }}
                 item={item}
               />
@@ -44,12 +44,12 @@ export const DashboardComponent: React.StatelessComponent<Props> = props => {
 
 DashboardComponent.defaultProps = {
   classes: {
-    root: '',
-    items: '',
+    root: "",
+    items: "",
     item: {
-      root: '',
-      icon: '',
-      title: '',
-    },
-  },
+      root: "",
+      icon: "",
+      title: ""
+    }
+  }
 };

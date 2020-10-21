@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 import {
   TabComponent,
   TabListComponent,
-  TabPanelComponent,
-} from 'common/components';
-import AppBar from '@material-ui/core/AppBar';
+  TabPanelComponent
+} from "common/components";
+import AppBar from "@material-ui/core/AppBar";
 import {
   DataComponent,
   EmployeeComponent,
-  ReportComponent,
-} from './components';
-import { Project } from './project.vm';
-import * as classes from './project.styles';
+  ReportComponent
+} from "./components";
+import { Project } from "./project.vm";
+import * as classes from "./project.styles";
 
 interface Props {
   isEditMode: boolean;
@@ -24,7 +24,7 @@ export const ProjectComponent: React.FunctionComponent<Props> = ({
   isEditMode,
   project,
   onSave,
-  onCancel,
+  onCancel
 }) => {
   const [tab, setTab] = React.useState(0);
   return (

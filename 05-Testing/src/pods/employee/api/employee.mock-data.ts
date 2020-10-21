@@ -1,33 +1,33 @@
-import { Employee, ProjectSummary } from './employee.api-model';
+import { Employee, ProjectSummary } from "./employee.api-model";
 
 const mockProjectSummaryList: ProjectSummary[] = [
   {
-    id: '1',
+    id: "1",
     isAssigned: true,
-    projectName: 'Mapfre',
+    projectName: "Mapfre"
   },
   {
-    id: '2',
+    id: "2",
     isAssigned: false,
-    projectName: 'Bankia',
+    projectName: "Bankia"
   },
   {
-    id: '3',
+    id: "3",
     isAssigned: false,
-    projectName: 'Vacaciones',
+    projectName: "Vacaciones"
   },
   {
-    id: '4',
+    id: "4",
     isAssigned: true,
-    projectName: 'Baja',
-  },
+    projectName: "Baja"
+  }
 ];
 
 export const mockEmployee: Employee = {
-  id: '1',
-  name: 'Prueba Nombre',
-  email: 'prueba@email.com',
+  id: "1",
+  name: "Prueba Nombre",
+  email: "prueba@email.com",
   isActive: true,
-  temporalPassword: 'admin',
-  projects: mockProjectSummaryList,
+  temporalPassword: "admin",
+  projects: mockProjectSummaryList
 };

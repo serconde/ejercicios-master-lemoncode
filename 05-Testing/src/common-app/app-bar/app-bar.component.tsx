@@ -1,18 +1,18 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuIcon from '@material-ui/icons/Menu';
-import { literals } from 'core/i18n';
-import { AuthContext, useLogout } from 'common-app/auth';
-import { SideMenuComponent } from './components';
-import { useMenu } from './app-bar.hook';
-import * as classes from './app-bar.styles';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MenuIcon from "@material-ui/icons/Menu";
+import { literals } from "core/i18n";
+import { AuthContext, useLogout } from "common-app/auth";
+import { SideMenuComponent } from "./components";
+import { useMenu } from "./app-bar.hook";
+import * as classes from "./app-bar.styles";
 
 // TODO: Pending to implement dynamic menu
 export const AppBarComponent: React.FC = () => {

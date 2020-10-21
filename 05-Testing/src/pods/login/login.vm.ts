@@ -4,6 +4,6 @@ export interface Login {
 }
 
 export const createEmptyLogin = (): Login => ({
-  user: '',
-  password: '',
+  user: "",
+  password: ""
 });

@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
-import { CellComponent } from './cell.component';
+import * as React from "react";
+import { render } from "@testing-library/react";
+import { CellComponent } from "./cell.component";
 
-describe('common/table/CellComponent', () => {
-  it('should render as expected passing required properties', () => {
+describe("common/table/CellComponent", () => {
+  it("should render as expected passing required properties", () => {
     // Arrange
 
     // Act
@@ -14,6 +14,6 @@ describe('common/table/CellComponent', () => {
     );
 
     // Assert
-    expect(getByText('Test content')).toBeInTheDocument();
+    expect(getByText("Test content")).toBeInTheDocument();
   });
 });

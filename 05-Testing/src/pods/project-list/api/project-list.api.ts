@@ -1,5 +1,5 @@
-import { Project } from './project-list.api-model';
-import { mockProjectList } from './project-list.mock-data';
+import { Project } from "./project-list.api-model";
+import { mockProjectList } from "./project-list.mock-data";
 
 let projectList = [...mockProjectList];
 

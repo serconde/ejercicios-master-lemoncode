@@ -1,8 +1,8 @@
-import React from 'react';
-import { HeaderGroup } from 'react-table';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { CellComponent } from './cell.component';
+import React from "react";
+import { HeaderGroup } from "react-table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import { CellComponent } from "./cell.component";
 
 interface Props {
   headerGroups: HeaderGroup[];
@@ -16,7 +16,7 @@ export const HeaderComponent: React.FunctionComponent<Props> = props => {
         <TableRow {...headerGroup.getHeaderGroupProps()}>
           {headerGroup.headers.map(column => (
             <CellComponent {...column.getHeaderProps()}>
-              {column.render('Header')}
+              {column.render("Header")}
             </CellComponent>
           ))}
         </TableRow>

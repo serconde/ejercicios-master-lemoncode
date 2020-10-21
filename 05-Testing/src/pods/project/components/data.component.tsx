@@ -1,8 +1,8 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
-import { TextFieldComponent, CheckboxComponent } from 'common/components';
-import { CommandFooterComponent } from '../../../common-app/command-footer';
-import { Project } from '../project.vm';
+import React from "react";
+import { Formik, Form } from "formik";
+import { TextFieldComponent, CheckboxComponent } from "common/components";
+import { CommandFooterComponent } from "../../../common-app/command-footer";
+import { Project } from "../project.vm";
 
 interface Props {
   project: Project;
@@ -15,7 +15,7 @@ export const DataComponent: React.FunctionComponent<Props> = ({
   project,
   onSave,
   onCancel,
-  className,
+  className
 }) => {
   return (
     <Formik initialValues={project} enableReinitialize={true} onSubmit={onSave}>
@@ -25,7 +25,7 @@ export const DataComponent: React.FunctionComponent<Props> = ({
             label="Id"
             name="id"
             InputProps={{
-              readOnly: true,
+              readOnly: true
             }}
           />
           <TextFieldComponent label="Nombre" name="name" />

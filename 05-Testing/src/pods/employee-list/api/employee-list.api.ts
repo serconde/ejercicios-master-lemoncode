@@ -1,5 +1,5 @@
-import { Employee } from './employee-list.api-model';
-import { mockEmployeeList } from './employee-list.mock-data';
+import { Employee } from "./employee-list.api-model";
+import { mockEmployeeList } from "./employee-list.mock-data";
 
 let employeeList = [...mockEmployeeList];
 

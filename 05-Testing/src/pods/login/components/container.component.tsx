@@ -1,9 +1,9 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import * as classes from './container.styles';
+import React from "react";
+import Container from "@material-ui/core/Container";
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import * as classes from "./container.styles";
 
 interface Props {
   title: string;

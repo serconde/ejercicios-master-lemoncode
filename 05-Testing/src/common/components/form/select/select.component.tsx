@@ -1,12 +1,12 @@
-import React from 'react';
-import { useField } from 'formik';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select, { SelectProps } from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import { Lookup } from 'common/models';
-import * as classes from './select.styles';
+import React from "react";
+import { useField } from "formik";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select, { SelectProps } from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import { Lookup } from "common/models";
+import * as classes from "./select.styles";
 
 interface Props extends SelectProps {
   items: Lookup[];
@@ -43,7 +43,7 @@ export const SelectComponent: React.FunctionComponent<Props> = props => {
       <Select
         {...otherProps}
         classes={{
-          select: classes.select,
+          select: classes.select
         }}
         id={name}
         labelId={labelId}

@@ -1,9 +1,9 @@
-import { Column, Cell } from 'react-table';
-import { mapToCollection } from 'common/mappers';
+import { Column, Cell } from "react-table";
+import { mapToCollection } from "common/mappers";
 
 const mapColumnFromStringToColumn = (column: string): Column => ({
   accessor: column,
-  Header: column,
+  Header: column
 });
 
 export const mapColumnListFromStringToColumn = (columns: string[]): Column[] =>

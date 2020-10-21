@@ -1,1 +1,1 @@
-export * from './submodule-list.container';
+export * from "./submodule-list.container";
