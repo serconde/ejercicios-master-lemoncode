@@ -5,20 +5,19 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    working-directory: ./07-Cloud
+
 jobs:
   cd:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./07-Cloud
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install
         run: npm install
-        working-directory: ${{env.working-directory}}
       - name: Build
         run: npm run build
-        working-directory: ${{env.working-directory}}
       - name: Deploy
         run: npm run deploy
-        working-directory: ${{env.working-directory}}
