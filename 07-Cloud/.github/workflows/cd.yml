@@ -8,10 +8,6 @@ on:
     branches:
       - master
 
-defaults:
-  run:
-    working-directory: ./07-Cloud
-
 jobs:
   cd:
     runs-on: ubuntu-latest
@@ -19,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install
-        run: npm install
+        run: cd .07-Cloud && npm install
       - name: Build
-        run: npm run build
+        run: cd .07-Cloud && npm run build
       - name: Deploy
-        run: npm run deploy
+        run: cd .07-Cloud && npm run deploy
