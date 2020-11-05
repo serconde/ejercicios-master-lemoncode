@@ -10,7 +10,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./07-Cloud
+    working-directory: ./07-Cloud/gh-pages-auto
 
 jobs:
   cd:
