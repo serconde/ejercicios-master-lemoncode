@@ -1,0 +1,37 @@
+name: Continuos Integration workflow
+
+on: push
+
+ 
+defaults:
+  run:
+    working-directory: ./05-Testing
+  
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Increase watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p        
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Unit tests
+        run: npm test
+      - name: Tests e2e
+        run: npm run test:e2e:ci
+      - name: Upload screenshots when specs fail
+        if: ${{ failure()}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: ./cypress/screenshots
+      - name: Upload videos when specs fail
+        if: ${{ failure()}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: videos
+          path: ./cypress/videos
